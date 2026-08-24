@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /news/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /players/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /seasons/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /streamers/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /links/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /gallery/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /pages/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /settings/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /leaderboard/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}

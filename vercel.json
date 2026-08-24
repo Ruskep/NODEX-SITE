@@ -1,0 +1,64 @@
+{
+  "rewrites": [
+    {
+      "source": "/news",
+      "destination": "/pages/news.html"
+    },
+    {
+      "source": "/seasons",
+      "destination": "/pages/seasons.html"
+    },
+    {
+      "source": "/players",
+      "destination": "/pages/players.html"
+    },
+    {
+      "source": "/content",
+      "destination": "/pages/content.html"
+    },
+    {
+      "source": "/useful",
+      "destination": "/pages/useful.html"
+    },
+    {
+      "source": "/kb",
+      "destination": "/pages/kb.html"
+    },
+    {
+      "source": "/mods",
+      "destination": "/pages/mods.html"
+    },
+    {
+      "source": "/links",
+      "destination": "/pages/links.html"
+    },
+    {
+      "source": "/map",
+      "destination": "/pages/map.html"
+    },
+    {
+      "source": "/player",
+      "destination": "/pages/player.html"
+    },
+    {
+      "source": "/season",
+      "destination": "/pages/season.html"
+    },
+    {
+      "source": "/partnership",
+      "destination": "/pages/partnership.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/mystery",
+      "destination": "/pages/mystery.html"
+    },
+    {
+      "source": "/goose",
+      "destination": "/pages/goose.html"
+    }
+  ]
+}

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ссылки — Nodex</title>
+  <meta name="description" content="Все ссылки сообщества Nodex — Discord, YouTube, VK и социальные сети игроков." />
+  <meta name="theme-color" content="#f59e0b" />
+  <link rel="canonical" href="https://nodex-mine.web.app/links" />
+  <meta property="og:site_name" content="Nodex" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ссылки — Nodex" />
+  <meta property="og:description" content="Все ссылки сообщества Nodex — Discord, YouTube, VK и социальные сети игроков." />
+  <meta property="og:url" content="https://nodex-mine.web.app/links" />
+  <meta property="og:image" content="https://nodex-mine.web.app/img/og-banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Ссылки — Nodex" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ссылки — Nodex" />
+  <meta name="twitter:description" content="Все ссылки сообщества Nodex — Discord, YouTube, VK и социальные сети игроков." />
+  <meta name="twitter:image" content="https://nodex-mine.web.app/img/og-banner.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/effects.css" />
+  <link rel="icon" type="image/png" href="../img/logo.png" />
+  <style>
+    /* ===== HERO ===== */
+    .links-hero {
+      padding: 150px 20px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .links-hero::before {
+      content: '';
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 680px;
+      height: 440px;
+      background: radial-gradient(ellipse at center, rgba(217,119,6,0.14), transparent 65%);
+      pointer-events: none;
+    }
+    .links-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      border: 1px solid rgba(217,119,6,0.25);
+      background: rgba(217,119,6,0.06);
+      color: var(--amber-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .links-hero__dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      animation: links-pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes links-pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(217,119,6,0.4); }
+      50% { opacity: 0.55; box-shadow: 0 0 0 5px rgba(217,119,6,0); }
+    }
+    .links-hero h1 {
+      font-size: clamp(34px, 6vw, 56px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      background: linear-gradient(135deg, var(--amber-light), var(--amber), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    .links-hero p {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ===== LINKS LIST ===== */
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 30px 0 80px;
+    }
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    }
+    .link-card:hover {
+      border-color: var(--border-light);
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.5), 0 0 26px rgba(217,119,6,0.07);
+    }
+    .link-card__icon {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.25);
+      transition: transform 0.3s cubic-bezier(.16,1,.3,1);
+    }
+    .link-card:hover .link-card__icon { transform: scale(1.08); }
+    .link-card__icon svg { width: 26px; height: 26px; }
+    .link-card__body { flex: 1; min-width: 0; }
+    .link-card__title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .link-card__badge {
+      padding: 2px 8px;
+      border-radius: var(--r-full);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #fca5a5;
+    }
+    .link-card__desc { font-size: 13px; color: var(--text-muted); }
+    .link-card__arrow {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-faint);
+      font-size: 16px;
+      transition: color 0.2s, border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .link-card:hover .link-card__arrow {
+      color: var(--amber);
+      border-color: rgba(217,119,6,0.3);
+      background: rgba(217,119,6,0.06);
+      transform: translateX(3px);
+    }
+
+    .links-empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-faint);
+      font-size: 13px;
+    }
+
+    /* ===== FAN LINKS ===== */
+    .fan-section {
+      padding: 0 0 70px;
+      position: relative;
+    }
+    .fan-section__head {
+      max-width: 620px;
+      margin: 0 auto 22px;
+    }
+    .fan-section__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      border: 1px solid rgba(217,119,6,0.25);
+      background: rgba(217,119,6,0.06);
+      color: var(--amber-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .fan-section__sep {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 620px;
+      margin: 0 auto 36px;
+    }
+    .fan-section__title {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--amber-light), var(--amber));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    .fan-section__sub {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+    .fan-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .fan-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    }
+    .fan-card:hover {
+      border-color: var(--border-light);
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.5), 0 0 26px rgba(217,119,6,0.07);
+    }
+    .fan-card__icon {
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.25);
+      transition: transform 0.3s cubic-bezier(.16,1,.3,1);
+    }
+    .fan-card:hover .fan-card__icon { transform: scale(1.06) rotate(-3deg); }
+    .fan-card__icon svg { width: 24px; height: 24px; }
+    .fan-card__media {
+      position: relative;
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+    }
+    .fan-card__image {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      object-fit: cover;
+      transition: transform 0.3s cubic-bezier(.16,1,.3,1);
+    }
+    .fan-card:hover .fan-card__image { transform: scale(1.06) rotate(-3deg); }
+    .fan-card__badge {
+      position: absolute;
+      right: -4px;
+      bottom: -4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #229ED9;
+      border: 2px solid var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+      transition: transform 0.3s cubic-bezier(.16,1,.3,1);
+    }
+    .fan-card__badge svg { width: 10px; height: 10px; fill: #fff; }
+    .fan-card:hover .fan-card__badge { transform: scale(1.12) rotate(-8deg); }
+    .fan-card__body { flex: 1; min-width: 0; }
+    .fan-card__title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fan-card__tag {
+      padding: 2px 8px;
+      border-radius: var(--r-full);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(217,119,6,0.12);
+      border: 1px solid rgba(217,119,6,0.3);
+      color: var(--amber-light);
+    }
+    .fan-card__desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .fan-card__arrow {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-faint);
+      font-size: 15px;
+      transition: color 0.2s, transform 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .fan-card:hover .fan-card__arrow {
+      color: var(--amber);
+      border-color: rgba(217,119,6,0.3);
+      background: rgba(217,119,6,0.06);
+      transform: translateX(3px);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <img src="../img/logo.png" alt="Nodex" class="header__logo-img">
+      </a>
+      <nav class="header__nav">
+        <a href="/">Главная</a>
+        <a href="news">Новости</a>
+        <a href="seasons">Сезоны</a>
+        <a href="players">Персонал</a>
+        <a href="content">Контент</a>
+        <a href="map">Карта</a>
+        <a href="useful">Полезное</a><a href="kb">Кодекс</a><a href="mods">Моды</a>
+        <a href="links" class="active">Ссылки</a>
+      </nav>
+      <div class="header__actions">
+        <a href="https://nodex.easydonate.ru/" target="_blank" rel="noopener" class="header__cta">Магазин</a>
+        <button class="header__burger" id="burgerBtn" aria-label="Меню">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/">Главная</a>
+    <a href="news">Новости</a>
+    <a href="seasons">Сезоны</a>
+    <a href="players">Персонал</a>
+    <a href="content">Контент</a>
+    <a href="map">Карта</a>
+    <a href="useful">Полезное</a><a href="kb">Кодекс</a><a href="mods">Моды</a>
+    <a href="links">Ссылки</a>
+    <a href="https://nodex.easydonate.ru/" target="_blank" rel="noopener">Магазин</a>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <main style="min-height:60vh">
+    <div class="links-hero nx-hero-bg">
+      <div class="links-hero__badge"><span class="links-hero__dot"></span> Наши ресурсы</div>
+      <h1>Где нас найти</h1>
+      <p>Сообщество Nodex в соцсетях — заходи, общайся и следи за событиями.</p>
+    </div>
+    <div class="container">
+      <div class="links-list" id="linksGrid"></div>
+    </div>
+
+    <section class="fan-section">
+      <div class="container">
+        <div class="fan-section__head">
+          <div class="fan-section__badge"><span class="links-hero__dot"></span> Сделано фанатами</div>
+          <div class="fan-section__title">Фан-ссылки</div>
+          <p class="fan-section__sub">Сторонние проекты и сообщества, придуманные игроками. Заходи, если хочется чего-то нового.</p>
+        </div>
+        <hr class="fan-section__sep">
+        <div class="fan-grid" id="fanGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__links">
+        <a href="https://discord.gg/jUmXexAkNY" target="_blank">Discord</a>
+        <a href="https://www.youtube.com/channel/UC7D3ZjVNYPNYoheauzTGGDw" target="_blank">YouTube</a>
+        <a href="https://vk.com/nodexmine" target="_blank">VK</a>
+        <a href="links">Ссылки</a>
+        <a href="https://nodex.easydonate.ru/" target="_blank">Магазин</a>
+        <a href="news">Новости</a>
+      </div>
+      <div class="footer__copy">Nodex © 2026. Не связано с Mojang или Microsoft.</div>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: "AIzaSyAtULyaH3v7pGZxo7xVUiWYKJRi9sWWQwA",
+      authDomain: "nodex-8a787.firebaseapp.com",
+      projectId: "nodex-8a787",
+      storageBucket: "nodex-8a787.firebasestorage.app",
+      messagingSenderId: "120232506956",
+      appId: "1:120232506956:web:858f407eb6ae6d265966e9",
+      measurementId: "G-P1WCGZK1KW"
+    });
+  </script>
+  <script>
+    var DEFAULT_LINKS = [
+      { platform: 'shop', title: 'Магазин', desc: 'Донат и покупка привилегий', url: 'https://nodex.easydonate.ru/' },
+      { platform: 'vk', title: 'VK', desc: 'Главная страница сообщества', url: 'https://vk.com/nodexmine' },
+      { platform: 'youtube', title: 'YouTube', desc: 'Видео и стримы с сервера', url: 'https://www.youtube.com/channel/UC7D3ZjVNYPNYoheauzTGGDw' },
+      { platform: 'discord', title: 'Discord', desc: 'Общайся с комьюнити', url: 'https://discord.gg/jUmXexAkNY' }
+    ];
+    var PLATFORMS = {
+      shop: { color: '#d97706', label: 'Магазин', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20"/><path d="M12 21 9 9M12 21l3-12M9 3l3 6 3-6"/></svg>' },
+      vk: { color: '#0077ff', icon: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M15.684 0H8.316C3.579 0 0 3.579 0 8.316v7.368C0 20.421 3.579 24 8.316 24h7.368C20.421 24 24 20.421 24 15.684V8.316C24 3.579 20.421 0 15.684 0zm3.282 16.975h-1.793c-.633 0-.828-.495-1.966-1.636-.991-.943-1.421-1.072-1.66-1.072-.337 0-.435.129-.435.645v1.131c0 .387-.129.615-1.149.615-1.694 0-3.567-1.042-4.88-2.983-1.038-1.447-1.956-3.758-1.956-4.822 0-.258.129-.516.645-.516h1.793c.484 0 .664.215.848.708.843 2.115 2.263 3.975 2.844 3.975.221 0 .322-.1.322-.644v-2.49c-.065-1.012-.619-1.094-.619-1.456 0-.18.166-.356.438-.356h2.785c.366 0 .494.18.494.57v3.108c0 .366.161.494.44.494.253 0 .443-.128.868-.553.859-.945 1.472-2.46 1.472-2.46.203-.387.398-.537.882-.537h1.793c.527 0 .645.258.527.625-.226.775-2.42 3.67-2.42 3.67-.194.28-.258.419 0 .74.193.268.834.817 1.259 1.317.465.54.828 1.11.828 1.47 0 .184-.08.372-.31.492z"/></svg>' },
+      youtube: { color: '#ff0033', icon: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>' },
+      discord: { color: '#5865f2', icon: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>' },
+      telegram: { color: '#229ed9', icon: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>' },
+      twitch: { color: '#9146ff', icon: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>' },
+      tiktok: { color: '#000000', icon: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>' },
+      other: { color: '#3a342c', icon: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V8h14v12z"/></svg>' }
+    };
+
+    function renderLinks(list) {
+      var grid = document.getElementById('linksGrid');
+      if (!list.length) {
+        grid.innerHTML = '<div class="links-empty">Пока нет ссылок.</div>';
+        return;
+      }
+      grid.innerHTML = list.map(function(l) {
+        var p = PLATFORMS[l.platform] || PLATFORMS.other;
+        var isPrimary = l.platform === 'discord';
+        return '<a href="' + l.url + '" target="_blank" rel="noopener" class="link-card">' +
+          '<div class="link-card__icon" style="background:' + p.color + '">' + p.icon + '</div>' +
+          '<div class="link-card__body">' +
+            '<div class="link-card__title">' + l.title + (isPrimary ? '<span class="link-card__badge">Главный</span>' : '') + '</div>' +
+            (l.desc ? '<div class="link-card__desc">' + l.desc + '</div>' : '') +
+          '</div>' +
+          '<div class="link-card__arrow">→</div>' +
+        '</a>';
+      }).join('');
+    }
+
+    (function() {
+      firebase.firestore().collection('links').orderBy('sort', 'asc').get().then(function(snap) {
+        if (snap.empty) { renderLinks(DEFAULT_LINKS); return; }
+        renderLinks(snap.docs.map(function(d) { return d.data(); }));
+      }).catch(function() { renderLinks(DEFAULT_LINKS); });
+    })();
+  </script>
+  <script>
+    var FAN_LINKS = [
+      { img: '../img/fan-community.jpeg', title: 'Nodex News', tag: 'Фан', desc: 'Новости сочные, как яблоко!', url: 'https://t.me/Nodex_Server', platform: 'telegram' },
+      { img: '../img/fan-nodexart.png', title: 'NodexART', tag: 'Фан', desc: 'Искусство - наша сила!', url: 'https://t.me/NodexART', platform: 'telegram' },
+      { img: '../img/fan-ampula.png', title: 'ПРОЕКТ - АМПУЛА', tag: 'Фан', desc: 'Спасёмся от вируса!', url: 'https://discord.gg/U5KrCy8hvj', platform: 'discord' }
+    ];
+
+    var FAN_BADGES = {
+      telegram: { color: '#229ED9', title: 'Telegram', svg: '<path d="M21.9 4.6c.3-1.2-.9-2.2-2-1.7L2.8 9.8c-1.2.5-1.1 2.2.1 2.6l4.5 1.4 1.7 5.4c.3 1.1 1.7 1.4 2.5.6l2.4-2.3 4.7 3.4c1 .7 2.4.2 2.7-1l2.5-15.3zM8.6 13.2l9.7-6.1c.4-.2.8.3.4.6l-8 7.2c-.3.3-.5.6-.5 1l-.3 2.1c0 .2-.4.2-.5 0l-1-3.2c-.2-.7.2-1.4.7-1.6z"/>' },
+      discord: { color: '#5865F2', title: 'Discord', svg: '<path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.07.07 0 00-.079.037c-.21.375-.445.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 00.031.056 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.1 13.1 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.291.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 01.078.01c.12.098.246.198.373.291a.077.077 0 01-.006.128 12.3 12.3 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.84 19.84 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>' }
+    };
+
+    function renderFanLinks() {
+      var grid = document.getElementById('fanGrid');
+      if (!grid) return;
+      if (!FAN_LINKS.length) { grid.innerHTML = ''; return; }
+      grid.innerHTML = FAN_LINKS.map(function(l) {
+        var badge = FAN_BADGES[l.platform] || FAN_BADGES.telegram;
+        var icon = l.img
+          ? '<div class="fan-card__media">' +
+              '<img src="' + l.img + '" alt="' + l.title + '" loading="lazy" class="fan-card__image">' +
+              '<span class="fan-card__badge" title="' + badge.title + '" style="background:' + badge.color + '"><svg viewBox="0 0 24 24">' + badge.svg + '</svg></span>' +
+            '</div>'
+          : '<div class="fan-card__icon" style="background:' + l.color + '">' + l.icon + '</div>';
+        return '<a href="' + l.url + '" target="_blank" rel="noopener" class="fan-card">' +
+          icon +
+          '<div class="fan-card__body">' +
+            '<div class="fan-card__title">' + l.title + '<span class="fan-card__tag">' + l.tag + '</span></div>' +
+            (l.desc ? '<div class="fan-card__desc">' + l.desc + '</div>' : '') +
+          '</div>' +
+          '<div class="fan-card__arrow">→</div>' +
+        '</a>';
+      }).join('');
+    }
+
+    renderFanLinks();
+  </script>
+  <script src="../js/server-status.js"></script>
+  <script src="../js/word-filter.js"></script>
+  <script src="../js/goose-game.js"></script>
+  <script src="../js/effects.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

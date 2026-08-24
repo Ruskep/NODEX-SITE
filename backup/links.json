@@ -1,0 +1,32 @@
+[
+  {
+    "id": "SlTaolmm0sGoSlg1clOU",
+    "data": {
+      "url": "https://vk.com/nodexmine",
+      "desc": "Главная страница сообщества",
+      "sort": 0,
+      "platform": "vk",
+      "title": "VK"
+    }
+  },
+  {
+    "id": "tjjezkDiKCQ4INybLMoW",
+    "data": {
+      "url": "https://www.youtube.com/channel/UC7D3ZjVNYPNYoheauzTGGDw",
+      "title": "YouTube",
+      "desc": "Видео и стримы с сервера",
+      "platform": "youtube",
+      "sort": 1
+    }
+  },
+  {
+    "id": "vhx7JMGIlh9V6p5ZSrvH",
+    "data": {
+      "url": "https://discord.gg/jUmXexAkNY",
+      "platform": "discord",
+      "desc": "Общайся с комьюнити",
+      "sort": 2,
+      "title": "Discord"
+    }
+  }
+]

@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кодекс игрока — Nodex</title>
+  <meta name="description" content="Кодекс игрока сервера Nodex — правила, фишки геймплея, медиа и комьюнити. Структурированный архив знаний." />
+  <meta name="theme-color" content="#f59e0b" />
+  <link rel="canonical" href="https://nodex-mine.web.app/kb" />
+  <meta property="og:site_name" content="Nodex" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Кодекс игрока — Nodex" />
+  <meta property="og:description" content="Правила, фишки геймплея, медиа и комьюнити сервера Nodex." />
+  <meta property="og:url" content="https://nodex-mine.web.app/kb" />
+  <meta property="og:image" content="https://nodex-mine.web.app/img/og-banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Кодекс игрока — Nodex" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Кодекс игрока — Nodex" />
+  <meta name="twitter:description" content="Правила, фишки геймплея, медиа и комьюнити сервера Nodex." />
+  <meta name="twitter:image" content="https://nodex-mine.web.app/img/og-banner.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/effects.css" />
+  <link rel="icon" type="image/png" href="../img/logo.png" />
+  <style>
+    :root {
+      --mono: 'Consolas', 'Cascadia Mono', monospace;
+    }
+
+    .kb-hero {
+      padding: 150px 20px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .kb-hero::before {
+      content: '';
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 680px;
+      height: 440px;
+      background: radial-gradient(ellipse at center, rgba(217,119,6,0.14), transparent 65%);
+      pointer-events: none;
+    }
+    .kb-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      border: 1px solid rgba(217,119,6,0.25);
+      background: rgba(217,119,6,0.06);
+      color: var(--amber-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .kb-hero__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      animation: kb-pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes kb-pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(217,119,6,0.4); }
+      50% { opacity: 0.55; box-shadow: 0 0 0 5px rgba(217,119,6,0); }
+    }
+    .kb-hero h1 {
+      font-size: clamp(34px, 6vw, 56px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      background: linear-gradient(135deg, var(--amber-light), var(--amber), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 0 16px;
+    }
+    .kb-hero p {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ===== LAYOUT ===== */
+    .kb-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 34px 24px 110px;
+    }
+
+    /* ===== SIDEBAR (ОГЛАВЛЕНИЕ) ===== */
+    .kb-side {
+      flex-shrink: 0;
+      width: 290px;
+      position: sticky;
+      top: 76px;
+      max-height: calc(100vh - 96px);
+      overflow-y: auto;
+      padding: 18px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--surface);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    }
+    .kb-side::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amber), var(--amber-light), var(--amber));
+      border-radius: var(--r-lg) var(--r-lg) 0 0;
+    }
+    .kb-side::-webkit-scrollbar { width: 5px; }
+    .kb-side::-webkit-scrollbar-thumb { background: rgba(217,119,6,0.25); border-radius: 3px; }
+    .kb-side__title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .kb-search { position: relative; margin-bottom: 18px; }
+    .kb-search input {
+      width: 100%;
+      padding: 10px 12px 10px 34px;
+      border-radius: var(--r-md);
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .kb-search input::placeholder { color: var(--text-faint); }
+    .kb-search input:focus { border-color: var(--border-light); }
+    .kb-search__icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      color: var(--text-faint);
+      pointer-events: none;
+    }
+    .kb-nav__group { margin-bottom: 18px; }
+    .kb-nav__group:last-child { margin-bottom: 0; }
+    .kb-nav__chapter {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin: 0 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .kb-nav__chapter .kb-nav__num { color: var(--amber); font-size: 12px; }
+    .kb-nav__link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: var(--r-md);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: background 0.18s, color 0.18s;
+    }
+    .kb-nav__link .kb-nav__idx {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--text-faint);
+      min-width: 12px;
+    }
+    .kb-nav__link:hover { color: var(--text); background: var(--amber-dim); }
+    .kb-nav__link.active {
+      color: var(--amber-light);
+      background: var(--amber-dim);
+      box-shadow: inset 0 0 0 1px rgba(217,119,6,0.25);
+    }
+    .kb-nav__link.active .kb-nav__idx { color: var(--amber); }
+    .kb-nav__empty {
+      font-size: 12px;
+      color: var(--text-faint);
+      padding: 8px 10px;
+      display: none;
+    }
+
+    /* ===== CONTENT ===== */
+    .kb-content { flex: 1; min-width: 0; max-width: 760px; }
+    .kb-article { display: none; animation: kb-in 0.3s ease; }
+    .kb-article.active { display: block; }
+    @keyframes kb-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .kb-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .kb-meta a { color: var(--amber); text-decoration: none; }
+    .kb-meta a:hover { color: var(--amber-light); }
+    .kb-meta__sep { opacity: 0.5; }
+
+    .kb-article h1 {
+      font-size: clamp(28px, 4.5vw, 40px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin: 0 0 14px;
+      background: linear-gradient(135deg, var(--amber-light), var(--amber), var(--copper));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .kb-lead {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0 0 18px;
+    }
+    .kb-rule {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(217,119,6,0.4), transparent);
+      margin: 0 0 24px;
+    }
+    .kb-article h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 32px 0 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .kb-article h2::before {
+      content: attr(data-num);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--amber);
+      letter-spacing: 1px;
+    }
+    .kb-article h3 { font-size: 15px; font-weight: 700; color: var(--text); margin: 24px 0 10px; }
+    .kb-article p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin: 0 0 14px; }
+    .kb-article p:last-child { margin-bottom: 0; }
+    .kb-article strong { color: var(--text); font-weight: 700; }
+    .kb-article a { color: var(--amber-light); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.3); }
+    .kb-article a:hover { color: var(--amber); }
+    .kb-article ol, .kb-article ul { margin: 6px 0 16px; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
+    .kb-article li { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .kb-article ol li::marker, .kb-article ul li::marker { color: var(--amber); font-weight: 700; }
+
+    /* ===== ПРИМЕЧАНИЯ ===== */
+    .note {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-radius: var(--r-md);
+      border: 1px solid rgba(217,119,6,0.22);
+      background: rgba(217,119,6,0.04);
+    }
+    .note__label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 8px;
+    }
+    .note p { margin: 0; font-size: 13.5px; line-height: 1.7; color: var(--text-muted); }
+    .note--warn { border-color: rgba(239,68,68,0.28); background: rgba(239,68,68,0.05); }
+    .note--warn .note__label { color: #ef6b6b; }
+    .note--hint { border-color: rgba(90,127,176,0.28); background: rgba(90,127,176,0.05); }
+    .note--hint .note__label { color: #8fb2d8; }
+
+    /* ===== КОМАНДЫ ===== */
+    .cmd {
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--amber);
+      background: var(--bg-soft);
+      padding: 16px 18px;
+      border-radius: var(--r-md);
+    }
+    .cmd__label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+    .cmd__line {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 2;
+      display: block;
+    }
+    .cmd__line .cmd__k { color: var(--amber-light); }
+    .cmd__hint { font-size: 11px; color: var(--text-faint); display: block; margin-top: 6px; }
+
+    /* ===== РЕЦЕПТ ===== */
+    .plate {
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--surface);
+      padding: 18px;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    }
+    .plate__label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 12px;
+    }
+    .plate p { font-size: 13.5px; margin: 0 0 14px; color: var(--text-muted); }
+    .plate img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--r-md);
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    .plate figcaption {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 10px;
+    }
+
+    /* ===== ПАГИНАЦИЯ ===== */
+    .kb-pager {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .kb-pager a {
+      flex: 1;
+      max-width: 48%;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: var(--r-md);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .kb-pager a.next { text-align: right; }
+    .kb-pager a:hover { border-color: var(--border-light); transform: translate(-1px, -1px); }
+    .kb-pager__dir {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 6px;
+    }
+    .kb-pager__title { font-size: 14px; font-weight: 700; color: var(--text-muted); }
+    .kb-pager a:hover .kb-pager__title { color: var(--amber-light); }
+    .kb-pager__off { flex: 1; max-width: 48%; }
+
+    /* ===== MOBILE ===== */
+    .kb-toc-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--amber);
+      border-radius: var(--r-md);
+      background: var(--surface);
+      color: var(--amber-light);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: 20px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    }
+    .kb-side__backdrop, .kb-side__close { display: none; }
+
+    @media (max-width: 960px) {
+      .kb-hero { padding: 132px 16px 24px; }
+      .kb-layout { flex-direction: column; padding: 22px 16px 80px; gap: 16px; }
+      .kb-toc-btn { display: flex; }
+      .kb-side {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 300px;
+        max-width: 85vw;
+        z-index: 100;
+        border-radius: 0;
+        box-shadow: 20px 0 60px rgba(0,0,0,0.5);
+        padding: 20px 16px;
+        transform: translateX(-100%);
+        transition: transform 0.28s cubic-bezier(.16,1,.3,1);
+        max-height: 100vh;
+      }
+      .kb-side::before { border-radius: 0; }
+      .kb-side.open { transform: translateX(0); }
+      .kb-side__close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        background: var(--surface);
+        color: var(--text-muted);
+        font-size: 13px;
+        cursor: pointer;
+        margin-bottom: 16px;
+      }
+      .kb-side__backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.55);
+        backdrop-filter: blur(2px);
+        z-index: 99;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .kb-side__backdrop.show { opacity: 1; pointer-events: auto; }
+      .kb-content { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <img src="../img/logo.png" alt="Nodex" class="header__logo-img">
+      </a>
+      <nav class="header__nav">
+        <a href="/">Главная</a>
+        <a href="news">Новости</a>
+        <a href="seasons">Сезоны</a>
+        <a href="players">Персонал</a>
+        <a href="content">Контент</a>
+        <a href="map">Карта</a>
+        <a href="kb" class="active">Кодекс</a><a href="mods">Моды</a>
+        <a href="links">Ссылки</a>
+      </nav>
+      <div class="header__actions">
+        <a href="https://nodex.easydonate.ru/" target="_blank" rel="noopener" class="header__cta">Магазин</a>
+        <button class="header__burger" id="burgerBtn" aria-label="Меню">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/">Главная</a>
+    <a href="news">Новости</a>
+    <a href="seasons">Сезоны</a>
+    <a href="players">Персонал</a>
+    <a href="content">Контент</a>
+    <a href="map">Карта</a>
+    <a href="kb">Кодекс</a><a href="mods">Моды</a>
+    <a href="links">Ссылки</a>
+    <a href="https://nodex.easydonate.ru/" target="_blank" rel="noopener">Магазин</a>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <main style="min-height:60vh">
+    <div class="kb-hero nx-hero-bg">
+      <div class="kb-hero__badge"><span class="kb-hero__dot"></span> <svg class="nx-ic"><use href="../img/icons.svg#i-scroll"/></svg> Архив знаний</div>
+      <h1>Кодекс игрока</h1>
+      <p>Правила, фишки геймплея, медиа и жизнь комьюнити — всё, что стоит знать каждому, кто вступает на Nodex.</p>
+    </div>
+
+    <div class="kb-layout">
+      <div class="kb-side__backdrop" id="kbBackdrop"></div>
+
+      <aside class="kb-side" id="kbSide">
+        <button class="kb-side__close" id="kbSideClose" aria-label="Закрыть оглавление">✕</button>
+        <div class="kb-side__title"><svg class="nx-ic"><use href="../img/icons.svg#i-bookmark"/></svg> Оглавление</div>
+        <div class="kb-search">
+          <span class="kb-search__icon">⌕</span>
+          <input type="text" id="kbSearch" placeholder="Искать в кодексе…" autocomplete="off" />
+        </div>
+        <nav class="kb-nav" id="kbNav">
+
+          <div class="kb-nav__group">
+            <div class="kb-nav__chapter"><span class="kb-nav__num">I</span> Правила и порядок</div>
+            <a class="kb-nav__link active" href="#afk" data-article="afk"><span class="kb-nav__idx">1</span>AFK и долгое отсутствие</a>
+            <a class="kb-nav__link" href="#court" data-article="court"><span class="kb-nav__idx">2</span>Суд за нарушение правил</a>
+          </div>
+
+          <div class="kb-nav__group">
+            <div class="kb-nav__chapter"><span class="kb-nav__num">II</span> Геймплей</div>
+            <a class="kb-nav__link" href="#invisible-light" data-article="invisible-light"><span class="kb-nav__idx">1</span>Невидимый свет</a>
+            <a class="kb-nav__link" href="#music-discs" data-article="music-discs"><span class="kb-nav__idx">2</span>Музыкальные пластинки</a>
+            <a class="kb-nav__link" href="#debug-stick" data-article="debug-stick"><span class="kb-nav__idx">3</span>Палочка отладки</a>
+            <a class="kb-nav__link" href="#scanner" data-article="scanner"><span class="kb-nav__idx">4</span>Сканер</a>
+          </div>
+
+          <div class="kb-nav__group">
+            <div class="kb-nav__chapter"><span class="kb-nav__num">III</span> Контент и медиа</div>
+            <a class="kb-nav__link" href="#media" data-article="media"><span class="kb-nav__idx">1</span>Где брать медиа-материалы</a>
+            <a class="kb-nav__link" href="#video" data-article="video"><span class="kb-nav__idx">2</span>Видео на канал Nodex</a>
+            <a class="kb-nav__link" href="#promo" data-article="promo"><span class="kb-nav__idx">3</span>Реклама сервера</a>
+          </div>
+
+          <div class="kb-nav__group">
+            <div class="kb-nav__chapter"><span class="kb-nav__num">IV</span> Комьюнити</div>
+            <a class="kb-nav__link" href="#fan" data-article="fan"><span class="kb-nav__idx">1</span>Фан-комьюнити и ссылки</a>
+            <a class="kb-nav__link" href="#ideas" data-article="ideas"><span class="kb-nav__idx">2</span>Подача идей</a>
+            <a class="kb-nav__link" href="#lore" data-article="lore"><span class="kb-nav__idx">3</span>Участие в лоре</a>
+            <a class="kb-nav__link" href="#events" data-article="events"><span class="kb-nav__idx">4</span>Устраивание ивентов</a>
+          </div>
+
+          <div class="kb-nav__group">
+            <div class="kb-nav__chapter"><span class="kb-nav__num">V</span> Важно</div>
+            <a class="kb-nav__link" href="#tl-skin" data-article="tl-skin"><span class="kb-nav__idx">1</span>Мод скинов TLauncher</a>
+          </div>
+
+          <div class="kb-nav__empty" id="kbNavEmpty">В кодексе ничего не найдено</div>
+        </nav>
+      </aside>
+
+      <div class="kb-content">
+
+        <!-- ===== I.1 AFK ===== -->
+        <article class="kb-article active" id="art-afk" data-chapter="I" data-num="1">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава I · Статья 1</span>
+          </div>
+          <h1>AFK и долгое отсутствие</h1>
+          <p class="kb-lead">Что происходит, если игрок подолгу не появляется на сервере, и как этого избежать.</p>
+          <div class="kb-rule"></div>
+
+          <p>Если вы долго не отвечаете или не заходите на сервер <strong>без предупреждений</strong>, мы можем вас отстранить или кикнуть.</p>
+
+          <h2 data-num="I.1">Как избежать кика</h2>
+          <p>Предупредите администрацию Nodex заранее — мы не будем кикать и будем ждать вашего возвращения.</p>
+          <div class="note note--hint">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-lightbulb"/></svg> Совет</div>
+            <p>Напишите админам перед долгим отсутствием, даже если это пара дней. Это займёт минуту и убережёт вас от лишних проблем.</p>
+          </div>
+
+          <h2 data-num="I.2">Если не могли зайти</h2>
+          <p>Не смогли зайти, потому что выключили свет, потеряли доступ или у вас взломали аккаунт? Не волнуйтесь — напишите администрации Nodex, и вам помогут восстановить аккаунт.</p>
+
+          <div class="note note--warn">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-warning"/></svg> Предупреждение</div>
+            <p>Если вы уходите на 1–30 лет — подумайте, будем ли мы вас ждать?</p>
+          </div>
+        </article>
+
+        <!-- ===== I.2 COURT ===== -->
+        <article class="kb-article" id="art-court" data-chapter="I" data-num="2">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава I · Статья 2</span>
+          </div>
+          <h1>Суд за нарушение правил</h1>
+          <p class="kb-lead">Как устроено правосудие на Nodex и чем грозит нарушение правил.</p>
+          <div class="kb-rule"></div>
+
+          <p>За нарушение базовых правил, таких как <strong>багюз</strong> и тем более <strong>взлом сервера</strong>, проводится суд.</p>
+
+          <h2 data-num="I.1">Как проходит суд</h2>
+          <p>Нарушителя отправляют в <strong>зал суда</strong>, где решается его судьба. Судья выслушивает стороны и выносит вердикт.</p>
+
+          <h2 data-num="I.2">Можно ли выиграть</h2>
+          <p>Да, вы можете выиграть суд — всё зависит от судьи и обстоятельств дела.</p>
+          <div class="note note--warn">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-warning"/></svg> Предупреждение</div>
+            <p>Если вы совершили очень серьёзный проступок — например, взлом сервера, — вряд ли что-то поможет.</p>
+          </div>
+        </article>
+
+        <!-- ===== II.1 INVISIBLE LIGHT ===== -->
+        <article class="kb-article" id="art-invisible-light" data-chapter="II" data-num="1">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава II · Статья 1</span>
+          </div>
+          <h1>Невидимый свет</h1>
+          <p class="kb-lead">Особый рецепт сервера Nodex: прозрачный блок, который освещает местность, как факел.</p>
+          <div class="kb-rule"></div>
+
+          <h2 data-num="II.1">Что это</h2>
+          <p><strong>Невидимый свет</strong> — это прозрачный блок, который освещает местность, как факел. Уровень света варьируется от <strong>1 до 15</strong>.</p>
+
+          <h2 data-num="II.2">Рецепт</h2>
+          <figure class="plate">
+            <div class="plate__label">Рецепт · Невидимый свет</div>
+            <p>Вокруг — жёлтая стеклянная панель, в середине — факел. Получается <strong>8 блоков света</strong>.</p>
+            <img src="../img/kb/invisible_light.png" alt="Крафт невидимого света" loading="lazy" />
+            <figcaption>Так это выглядит в игре.</figcaption>
+          </figure>
+
+          <h2 data-num="II.3">Где использовать</h2>
+          <p>Идеально для освещения комнат, где вы не хотите ставить видимые факелы, фонари и другие источники света.</p>
+        </article>
+
+        <!-- ===== II.2 MUSIC DISCS ===== -->
+        <article class="kb-article" id="art-music-discs" data-chapter="II" data-num="2">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава II · Статья 2</span>
+          </div>
+          <h1>Музыкальные пластинки</h1>
+          <p class="kb-lead">На Nodex работают проигрыватели и пластинки CustomDiscs — теперь в игре можно слушать свою музыку.</p>
+          <div class="kb-rule"></div>
+
+          <h2 data-num="II.1">Что это</h2>
+          <p>На сервере установлен плагин <strong>CustomDiscs</strong> (на базе Simple Voice Chat). Он позволяет заводить в проигрывателях собственную музыку — как обычные пластинки, но с любыми треками.</p>
+          <div class="note note--hint">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-pin"/></svg> Важно</div>
+            <p>Плагин работает через <strong>Simple Voice Chat</strong> — этот мод должен стоять у всех игроков, иначе музыка не будет слышна.</p>
+          </div>
+
+          <h2 data-num="II.2">Что можно слушать</h2>
+          <ul>
+            <li>Локальные файлы, загруженные администрацией на сервер.</li>
+            <li>Потоки по ссылкам с <strong>YouTube</strong> и <strong>SoundCloud</strong> — без скачивания вручную.</li>
+          </ul>
+
+          <h2 data-num="II.3">Как получить пластинку</h2>
+          <p>Пластинки создаёт администрация: трек скачивается на сервер, после чего проигрывается на расстоянии до <strong>64 блоков</strong> от проигрывателя.</p>
+          <div class="cmd">
+            <div class="cmd__label">Команды плагина</div>
+            <span class="cmd__line"><span class="cmd__k">/cd help</span> — список команд</span>
+            <span class="cmd__line"><span class="cmd__k">/cd download</span> "ссылка" имя.ogg — скачать трек</span>
+            <span class="cmd__line"><span class="cmd__k">/cd create</span> local|remote — создать пластинку</span>
+            <span class="cmd__line"><span class="cmd__k">/cd distance</span> радиус — дальность звука</span>
+            <span class="cmd__hint">Доступ к командам — у администрации.</span>
+          </div>
+
+          <div class="note note--warn">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-warning"/></svg> Предупреждение</div>
+            <p>Стриминг с YouTube требует авторизации. Если пластинка не заиграла — сообщите администрации, и они исправят.</p>
+          </div>
+        </article>
+
+        <!-- ===== II.3 DEBUG STICK ===== -->
+        <article class="kb-article" id="art-debug-stick" data-chapter="II" data-num="3">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава II · Статья 3</span>
+          </div>
+          <h1>Палочка отладки</h1>
+          <p class="kb-lead">Внутриигровой инструмент для изменения свойств блоков прямо на сервере.</p>
+          <div class="kb-rule"></div>
+
+          <h2 data-num="II.1">Как работает</h2>
+          <ul>
+            <li><strong>ЛКМ</strong> по блоку — переключение свойства блока (<strong>Shift</strong> — в обратную сторону).</li>
+            <li><strong>ПКМ</strong> по блоку — смена значения выбранного свойства (<strong>Shift</strong> — реверс).</li>
+            <li>На каком свойстве остановился — запоминается в самом предмете.</li>
+          </ul>
+
+          <h2 data-num="II.2">На что нельзя менять</h2>
+          <div class="note note--warn">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-warning"/></svg> Ограничения</div>
+            <ul>
+              <li><strong>Полублоки (слабы)</strong> — нельзя переводить в двойной, чтобы не было дюпа при добыче.</li>
+              <li><strong>Заливка водой (waterlogged)</strong> — чтобы нельзя было создавать бесконечную воду.</li>
+              <li><strong>Снежный покров на траве</strong> и прочее лишнее — чтобы не ломать геймплей.</li>
+            </ul>
+          </div>
+
+          <h2 data-num="II.3">Рецепт</h2>
+          <figure class="plate">
+            <div class="plate__label">Рецепт · Палочка отладки</div>
+            <p>Крафтится через верстак — вот как это выглядит в игре.</p>
+            <img src="../img/kb/debug_stick.png" alt="Крафт палочки отладки" loading="lazy" />
+            <figcaption>Так выглядит крафт в игре.</figcaption>
+          </figure>
+        </article>
+
+        <!-- ===== II.4 SCANNER ===== -->
+        <article class="kb-article" id="art-scanner" data-chapter="II" data-num="4">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава II · Статья 4</span>
+          </div>
+          <h1>Сканер</h1>
+          <p class="kb-lead">Предмет для расследования истории блоков: кто их поставил или сломал.</p>
+          <div class="kb-rule"></div>
+
+          <h2 data-num="II.1">Что это</h2>
+          <p><strong>Сканер</strong> — это инструмент для изучения истории блоков. Он показывает, <strong>кто поставил или сломал</strong> конкретный блок в мире Nodex.</p>
+          <figure class="plate">
+            <div class="plate__label">Внешний вид · Сканер</div>
+            <p>Так выглядит предмет и его описание в игре.</p>
+            <img src="../img/kb/scanner_lore.png" alt="Сканер — описание предмета" loading="lazy" />
+            <figcaption>Инструмент для расследования истории блоков.</figcaption>
+          </figure>
+
+          <h2 data-num="II.2">Как получить</h2>
+          <p>Скрафтите сканер на <strong>верстаке</strong>:</p>
+          <figure class="plate">
+            <div class="plate__label">Рецепт · Сканер</div>
+            <p>Соберите сканер на верстаке — вот как это выглядит в игре.</p>
+            <img src="../img/kb/scanner_craft.png" alt="Крафт сканера" loading="lazy" />
+            <figcaption>Так выглядит крафт в игре.</figcaption>
+          </figure>
+
+          <h2 data-num="II.3">Как пользоваться</h2>
+          <ol>
+            <li><strong>Возьмите сканер в главную руку</strong> — включится режим инспектора (прозвучит звук и появится сообщение «Сканер включен»).</li>
+            <li><strong>Наведите на любой блок и нажмите ПКМ</strong> — увидите, кто его ставил или ломал.</li>
+            <li><strong>Уберите сканер из руки</strong> — режим выключится (сообщение «Сканер выключен»).</li>
+          </ol>
+          <div class="note note--warn">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-warning"/></svg> Важно</div>
+            <p>Без сканера в руке просмотр истории блоков <strong>недоступен</strong>. Режим инспектора работает только пока предмет находится в главной руке.</p>
+          </div>
+        </article>
+
+        <!-- ===== III.1 MEDIA ===== -->
+        <article class="kb-article" id="art-media" data-chapter="III" data-num="1">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава III · Статья 1</span>
+          </div>
+          <h1>Где брать медиа-материалы</h1>
+          <p class="kb-lead">Ответ на частый вопрос: где находятся все материалы для видео и стримов.</p>
+          <div class="kb-rule"></div>
+
+          <p>Все материалы для видео и стримов собраны в канале <strong>#медиа-материалы</strong>.</p>
+          <div class="note note--hint">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-memo"/></svg> Примечание</div>
+            <p>Заходите в Discord-канал Nodex, находите раздел #медиа-материалы и скачивайте всё необходимое.</p>
+          </div>
+        </article>
+
+        <!-- ===== III.2 VIDEO ===== -->
+        <article class="kb-article" id="art-video" data-chapter="III" data-num="2">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава III · Статья 2</span>
+          </div>
+          <h1>Видео на канал Nodex</h1>
+          <p class="kb-lead">Как выпустить видео на официальный YouTube-канал сервера.</p>
+          <div class="kb-rule"></div>
+
+          <p>Хотите выпустить видео на <strong>официальный YouTube-канал Nodex</strong>? Тогда:</p>
+          <ol>
+            <li>Сообщите об этом администрации.</li>
+            <li>Предоставьте все нужные материалы — <strong>превью и видео</strong>.</li>
+          </ol>
+        </article>
+
+        <!-- ===== III.3 PROMO ===== -->
+        <article class="kb-article" id="art-promo" data-chapter="III" data-num="3">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава III · Статья 3</span>
+          </div>
+          <h1>Реклама сервера</h1>
+          <p class="kb-lead">Что указывать при рекламе Nodex на YouTube и Twitch.</p>
+          <div class="kb-rule"></div>
+
+          <p>Мы благодарим всех, кто рекламирует наш сервер! Просим вас указывать что-то про Nodex.</p>
+
+          <h2 data-num="III.1">YouTube</h2>
+          <p>Если вы создали видео — в описании укажите готовую фразу со ссылкой:</p>
+          <div class="note">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-chat"/></svg> Фраза для описания</div>
+            <p>«Играю на приватном сервере Nodex! — https://nodex-mine.web.app»</p>
+          </div>
+
+          <h2 data-num="III.2">Twitch</h2>
+          <ol>
+            <li>Создайте отдельную кликабельную ссылку на ваш канал (загуглите, как это сделать, если не знаете).</li>
+            <li>Вставьте ссылку на страницу Nodex.</li>
+            <li>Загрузите картинку, которая была отправлена в <strong>#медиа-материалы</strong>.</li>
+          </ol>
+        </article>
+
+        <!-- ===== IV.1 FAN ===== -->
+        <article class="kb-article" id="art-fan" data-chapter="IV" data-num="1">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава IV · Статья 1</span>
+          </div>
+          <h1>Фан-комьюнити и ссылки</h1>
+          <p class="kb-lead">Хотите создать своё комьюнити вокруг Nodex? Расскажите нам.</p>
+          <div class="kb-rule"></div>
+
+          <p>Если у вас есть желание создать своё комьюнити — например, <strong>ТГК новостей Nodex</strong> или <strong>запись лора ТО</strong> — расскажите об этом администрации.</p>
+          <div class="note note--hint">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-memo"/></svg> Примечание</div>
+            <p>Возможно, мы добавим ваше комьюнити в раздел фан-ссылок.</p>
+          </div>
+        </article>
+
+        <!-- ===== IV.2 IDEAS ===== -->
+        <article class="kb-article" id="art-ideas" data-chapter="IV" data-num="2">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава IV · Статья 2</span>
+          </div>
+          <h1>Подача идей</h1>
+          <p class="kb-lead">Хотите добавить свою частичку на сервер или создать свою механику? Это возможно на NODEX!</p>
+          <div class="kb-rule"></div>
+
+          <h2 data-num="IV.1">Как подать идею</h2>
+          <ol>
+            <li>Зайдите в Discord-канал NODEX.</li>
+            <li>Найдите раздел <strong>#идеи</strong> и напишите, что хотите видеть на сервере.</li>
+            <li>Дождитесь ответа администрации.</li>
+          </ol>
+          <div class="note note--hint">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-edit"/></svg> Пример</div>
+            <p>«Здравствуйте, я хочу, чтобы на сайте появился раздел со всеми крафтами сервера».</p>
+          </div>
+
+          <h2 data-num="IV.2">Возможные вердикты</h2>
+          <ul>
+            <li><strong>Принято</strong> — идея будет реализована.</li>
+            <li><strong>Отказано</strong> — идея не подходит.</li>
+            <li><strong>На усмотрение</strong> — подумаем и вернёмся позже.</li>
+          </ul>
+        </article>
+
+        <!-- ===== IV.3 LORE ===== -->
+        <article class="kb-article" id="art-lore" data-chapter="IV" data-num="3">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава IV · Статья 3</span>
+          </div>
+          <h1>Участие в лоре</h1>
+          <p class="kb-lead">У Nodex есть свой лор, и каждый игрок может повлиять на него.</p>
+          <div class="kb-rule"></div>
+
+          <p>На NODEX есть свой лор. Просьба ко всем участникам — <strong>принимать в нём участие, делать догадки и не избегать этого</strong>!</p>
+          <p>Возможно, определённый лор появится именно благодаря вам.</p>
+          <div class="note">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-book"/></svg> Пример из летописи</div>
+            <p>С неба упал огромный кусок скалы, он начал заражать весь мир, а из этой скалы вылез мальчик.</p>
+          </div>
+        </article>
+
+        <!-- ===== IV.4 EVENTS ===== -->
+        <article class="kb-article" id="art-events" data-chapter="IV" data-num="4">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава IV · Статья 4</span>
+          </div>
+          <h1>Устраивание ивентов</h1>
+          <p class="kb-lead">Создавайте свои ивенты на отдельной территории сервера.</p>
+          <div class="kb-rule"></div>
+
+          <p>Мы очень ценим игроков, которые создают свои ивенты.</p>
+          <p>Проводить их можно на отдельно выделенной территории — <strong>«Зона Ивентов»</strong>, которая появится после открытия сервера.</p>
+          <div class="note note--hint">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-memo"/></svg> Примечание</div>
+            <p>Вы можете создавать любой ивент в зависимости от вашей фантазии.</p>
+          </div>
+        </article>
+
+        <!-- ===== V.1 TL SKIN ===== -->
+        <article class="kb-article" id="art-tl-skin" data-chapter="V" data-num="1">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава V · Статья 1</span>
+          </div>
+          <h1>Мод скинов TLauncher</h1>
+          <p class="kb-lead">Обязательное предупреждение для всех игроков.</p>
+          <div class="kb-rule"></div>
+
+          <div class="note note--warn">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-warning"/></svg> Предупреждение</div>
+            <p><strong>Удалите мод TL_SKIN_AND_CAPE из сборки NODEX!</strong> Из-за него неправильно отображаются скины. У нас есть <strong>SkinRestorer</strong>.</p>
+          </div>
+
+          <p>Этот мод ломает отображение скинов у всех игроков на сервере. Уберите его из сборки и используйте <strong>SkinRestorer</strong> — скины снова будут показываться корректно.</p>
+        </article>
+
+        <!-- ===== PAGER ===== -->
+        <nav class="kb-pager" id="kbPager"></nav>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__links">
+        <a href="https://discord.gg/jUmXexAkNY" target="_blank">Discord</a>
+        <a href="https://www.youtube.com/channel/UC7D3ZjVNYPNYoheauzTGGDw" target="_blank">YouTube</a>
+        <a href="https://vk.com/nodexmine" target="_blank">VK</a>
+        <a href="kb">Кодекс</a><a href="mods">Моды</a>
+        <a href="news">Новости</a>
+        <a href="https://nodex.easydonate.ru/" target="_blank">Магазин</a>
+      </div>
+      <div class="footer__copy">Nodex © 2026. Не связано с Mojang или Microsoft.</div>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: "AIzaSyAtULyaH3v7pGZxo7xVUiWYKJRi9sWWQwA",
+      authDomain: "nodex-8a787.firebaseapp.com",
+      projectId: "nodex-8a787",
+      storageBucket: "nodex-8a787.firebasestorage.app",
+      messagingSenderId: "120232506956",
+      appId: "1:120232506956:web:858f407eb6ae6d265966e9",
+      measurementId: "G-P1WCGZK1KW"
+    });
+
+    (function() {
+      var articles = Array.prototype.slice.call(document.querySelectorAll('.kb-article'));
+      var links = Array.prototype.slice.call(document.querySelectorAll('.kb-nav__link'));
+      var pager = document.getElementById('kbPager');
+      var side = document.getElementById('kbSide');
+      var backdrop = document.getElementById('kbBackdrop');
+      var tocBtn = document.createElement('button');
+      tocBtn.className = 'kb-toc-btn';
+      tocBtn.innerHTML = '<svg class="nx-ic"><use href="../img/icons.svg#i-bookmark"/></svg> Оглавление';
+      document.querySelector('.kb-content').prepend(tocBtn);
+
+      function show(id) {
+        var art = document.getElementById('art-' + id);
+        if (!art) return;
+        articles.forEach(function(a) { a.classList.toggle('active', a === art); });
+        links.forEach(function(l) { l.classList.toggle('active', l.getAttribute('data-article') === id); });
+        renderPager(id);
+        side.classList.remove('open');
+        backdrop.classList.remove('show');
+        if (history.replaceState) history.replaceState(null, '', '#/' + id);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      links.forEach(function(l) {
+        l.addEventListener('click', function(e) {
+          e.preventDefault();
+          show(l.getAttribute('data-article'));
+        });
+      });
+
+      function renderPager(id) {
+        var idx = articles.findIndex(function(a) { return a.id === 'art-' + id; });
+        var prev = idx > 0 ? articles[idx - 1] : null;
+        var next = idx < articles.length - 1 ? articles[idx + 1] : null;
+        var html = '';
+        html += prev
+          ? '<a href="#' + prev.id.replace('art-', '') + '"><div class="kb-pager__dir">Предыдущая статья</div><div class="kb-pager__title">' + prev.querySelector('h1').textContent + '</div></a>'
+          : '<div class="kb-pager__off"></div>';
+        html += next
+          ? '<a class="next" href="#' + next.id.replace('art-', '') + '"><div class="kb-pager__dir">Следующая статья</div><div class="kb-pager__title">' + next.querySelector('h1').textContent + '</div></a>'
+          : '<div class="kb-pager__off"></div>';
+        pager.innerHTML = html;
+        Array.prototype.slice.call(pager.querySelectorAll('a')).forEach(function(a) {
+          a.addEventListener('click', function(e) {
+            e.preventDefault();
+            show(a.getAttribute('href').slice(1));
+          });
+        });
+      }
+
+      var initial = (location.hash || '#/afk').replace('#/', '');
+      show(initial);
+
+      var search = document.getElementById('kbSearch');
+      var empty = document.getElementById('kbNavEmpty');
+      search.addEventListener('input', function() {
+        var q = search.value.trim().toLowerCase();
+        var any = false;
+        document.querySelectorAll('.kb-nav__group').forEach(function(g) {
+          var visible = 0;
+          g.querySelectorAll('.kb-nav__link').forEach(function(l) {
+            var match = l.textContent.toLowerCase().indexOf(q) !== -1;
+            l.style.display = match ? 'flex' : 'none';
+            if (match) visible++;
+          });
+          g.style.display = visible ? 'block' : 'none';
+          if (visible) any = true;
+        });
+        empty.style.display = any || !q ? 'none' : 'block';
+      });
+
+      tocBtn.addEventListener('click', function() {
+        side.classList.add('open');
+        backdrop.classList.add('show');
+      });
+      backdrop.addEventListener('click', function() {
+        side.classList.remove('open');
+        backdrop.classList.remove('show');
+      });
+      document.getElementById('kbSideClose').addEventListener('click', function() {
+        side.classList.remove('open');
+        backdrop.classList.remove('show');
+      });
+    })();
+  </script>
+  <script src="../js/server-status.js"></script>
+  <script src="../js/word-filter.js"></script>
+  <script src="../js/goose-game.js"></script>
+  <script src="../js/effects.js"></script>
+  <script src="../js/nx-icons.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
