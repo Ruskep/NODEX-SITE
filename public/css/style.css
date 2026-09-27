@@ -102,9 +102,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 16px;
+  gap: 10px;
   transition: padding 0.3s;
 }
 .header--pill .header__inner { padding: 0 12px; }
@@ -143,13 +144,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .header--pill .header__logo-text { font-size: 15px; }
 .header--pill .header__logo-img { height: 28px; }
 
-.header__nav { display: flex; gap: 2px; }
+.header__nav { display: flex; gap: 1px; flex-wrap: nowrap; }
 .header__nav a {
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: var(--r-full);
   font-size: 13px;
   font-weight: 600;
   color: var(--text-muted);
+  white-space: nowrap;
   transition: background 0.2s, color 0.2s, font-size 0.3s, padding 0.3s;
 }
 .header__nav a:hover { background: rgba(255,255,255,0.04); color: var(--text); }
@@ -158,10 +160,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .header__actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .header__cta {
-  padding: 7px 16px;
+  padding: 7px 14px;
   border-radius: var(--r-full);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
   background: linear-gradient(135deg, var(--amber), var(--amber-light));
   color: #fff;
   transition: transform 0.2s, box-shadow 0.2s, font-size 0.3s, padding 0.3s;
@@ -803,14 +806,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .mobile-nav a:hover { color: var(--text); }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1100px) {
+@media (max-width: 1280px) {
   .header__nav { gap: 0; }
-  .header__nav a { padding: 6px 8px; font-size: 11.5px; }
-  .header__cta { padding: 7px 12px; font-size: 12px; }
+  .header__nav a { padding: 5px 7px; font-size: 11.5px; }
+  .header__cta { padding: 6px 10px; font-size: 11px; }
 }
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .header__nav { display: none; }
   .header__burger { display: flex; }
+}
+@media (max-width: 768px) {
   .header--pill { left: 4px; right: 4px; height: 46px; }
   .cards-3, .cards-2 { grid-template-columns: 1fr; }
   .section { padding: 48px 0; }
