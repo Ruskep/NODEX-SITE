@@ -541,6 +541,7 @@
             <a class="kb-nav__link" href="#music-discs" data-article="music-discs"><span class="kb-nav__idx">2</span>Музыкальные пластинки</a>
             <a class="kb-nav__link" href="#debug-stick" data-article="debug-stick"><span class="kb-nav__idx">3</span>Палочка отладки</a>
             <a class="kb-nav__link" href="#scanner" data-article="scanner"><span class="kb-nav__idx">4</span>Сканер</a>
+            <a class="kb-nav__link" href="#chat" data-article="chat"><span class="kb-nav__idx">5</span>Функциональный чат</a>
           </div>
 
           <div class="kb-nav__group">
@@ -752,6 +753,41 @@
           <div class="note note--warn">
             <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-warning"/></svg> Важно</div>
             <p>Без сканера в руке просмотр истории блоков <strong>недоступен</strong>. Режим инспектора работает только пока предмет находится в главной руке.</p>
+          </div>
+        </article>
+
+        <!-- ===== II.5 CHAT ===== -->
+        <article class="kb-article" id="art-chat" data-chapter="II" data-num="5">
+          <div class="kb-meta">
+            <a href="/kb">Кодекс</a><span class="kb-meta__sep">/</span><span>Глава II · Статья 5</span>
+          </div>
+          <h1>Функциональный чат</h1>
+          <p class="kb-lead">Команды с префиксом «^» — быстрый способ посмотреть информацию об игроках прямо из чата.</p>
+          <div class="kb-rule"></div>
+
+          <h2 data-num="II.1">Что это</h2>
+          <p><strong>Функциональный чат</strong> — это набор команд сервера Nodex. Они начинаются с символа <strong>«^»</strong> и показывают информацию об игроке: инвентарь, опыт, предмет в руке и текущую локацию.</p>
+
+          <h2 data-num="II.2">Команды</h2>
+          <div class="cmd">
+            <div class="cmd__label">Команды функционального чата</div>
+            <span class="cmd__line"><span class="cmd__k">^inv</span> — инвентарь игрока</span>
+            <span class="cmd__line"><span class="cmd__k">^ender</span> — эндер-сундук (Сундук Края) игрока</span>
+            <span class="cmd__line"><span class="cmd__k">^xp</span> — опыт игрока</span>
+            <span class="cmd__line"><span class="cmd__k">^item</span> — предмет в руке игрока: описание, характеристики и зачарования</span>
+            <span class="cmd__line"><span class="cmd__k">^loc</span> — локация игрока</span>
+          </div>
+
+          <h2 data-num="II.3">Цвета локаций</h2>
+          <p>Команда <span class="cmd__k">^loc</span> показывает, где сейчас находится игрок, с цветовой подсказкой:</p>
+          <ul>
+            <li><strong>Обычный мир</strong> — зелёный.</li>
+            <li><strong>Ад</strong> — красный.</li>
+            <li><strong>Энд</strong> — фиолетовый.</li>
+          </ul>
+          <div class="note note--hint">
+            <div class="note__label"><svg class="nx-ic"><use href="../img/icons.svg#i-lightbulb"/></svg> Совет</div>
+            <p>Удобно проверять, чем занят игрок или где он находится, не отвлекая его от игры.</p>
           </div>
         </article>
 

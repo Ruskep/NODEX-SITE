@@ -281,6 +281,10 @@
     .role-менеджер { background: linear-gradient(135deg, rgba(245,158,11,0.14), rgba(56,189,248,0.08)); color: #fcd34d; border: 1px solid rgba(245,158,11,0.35); }
     .role-лор-мастер { background: rgba(74,222,128,0.1); color: #86efac; border: 1px solid rgba(74,222,128,0.28); }
     .role-строитель { background: rgba(251,146,60,0.1); color: #fdba74; border: 1px solid rgba(251,146,60,0.3); }
+    .role-хелпер { background: rgba(74,222,128,0.12); color: #86efac; border: 1px solid rgba(74,222,128,0.3); }
+    .role-моделлер { background: rgba(250,204,21,0.12); color: #fde047; border: 1px solid rgba(250,204,21,0.3); }
+    .role-модератор { background: rgba(45,212,191,0.12); color: #5eead4; border: 1px solid rgba(45,212,191,0.3); }
+    .role-ивентолог { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.3); }
     .role-участник { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--border); }
 
     .player-card__desc {
@@ -435,7 +439,7 @@
         grid.innerHTML = '<p style="color:var(--text-faint);font-size:13px;text-align:center;margin-top:40px">Пока тут пусто!</p>';
         return;
       }
-      var ROLE_RANK = { 'создатель': 0, 'менеджер': 1, 'тех админ': 2, 'админ': 3, 'сценарист': 4, 'художник': 5, 'лор-мастер': 6, 'строитель': 7 };
+      var ROLE_RANK = { 'создатель': 0, 'менеджер': 1, 'тех админ': 2, 'админ': 3, 'сценарист': 4, 'художник': 5, 'лор-мастер': 6, 'строитель': 7, 'модератор': 8, 'хелпер': 9, 'моделлер': 10, 'ивентолог': 11 };
       staff = staff.slice().sort(function(a, b) {
         var ra = ROLE_RANK[a.role] !== undefined ? ROLE_RANK[a.role] : 9;
         var rb = ROLE_RANK[b.role] !== undefined ? ROLE_RANK[b.role] : 9;

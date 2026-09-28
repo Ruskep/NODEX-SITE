@@ -312,5 +312,37 @@
     "role": "менеджер",
     "description": "",
     "slim": true
+  },
+  {
+    "id": "test_helper",
+    "name": "Тест Хелпер",
+    "minecraftNick": "TestHelper",
+    "role": "хелпер",
+    "description": "Тестовый персонаж для проверки роли «Хелпер». Удалить после теста.",
+    "slim": true
+  },
+  {
+    "id": "test_modeller",
+    "name": "Тест Моделлер",
+    "minecraftNick": "TestModeller",
+    "role": "моделлер",
+    "description": "Тестовый персонаж для проверки роли «Моделлер». Удалить после теста.",
+    "slim": true
+  },
+  {
+    "id": "test_moderator",
+    "name": "Тест Модератор",
+    "minecraftNick": "TestModerator",
+    "role": "модератор",
+    "description": "Тестовый персонаж для проверки роли «Модератор». Удалить после теста.",
+    "slim": true
+  },
+  {
+    "id": "test_eventolog",
+    "name": "Тест Ивентолог",
+    "minecraftNick": "TestEventolog",
+    "role": "ивентолог",
+    "description": "Тестовый персонаж для проверки роли «Ивентолог». Удалить после теста.",
+    "slim": true
   }
 ]
