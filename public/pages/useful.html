@@ -277,6 +277,240 @@
     }
     .panel-head h3 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
     .panel-head p { font-size: 13px; color: var(--text-muted); }
+
+    /* ===== MAP ===== */
+    .map-frame {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      background: var(--surface);
+      height: 72vh;
+      min-height: 480px;
+      max-width: 1120px;
+      margin: 0 auto 80px;
+      box-shadow: 0 16px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #0a0a0a;
+    }
+    .map-frame__hint {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      background: rgba(15,12,8,0.85);
+      border: 1px solid var(--border-light);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-faint);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .map-placeholder {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      text-align: center;
+      padding: 40px;
+    }
+    .map-placeholder__icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--amber-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.25);
+    }
+    .map-placeholder h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0;
+    }
+    .map-placeholder p {
+      font-size: 13px;
+      color: var(--text-faint);
+      max-width: 340px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ===== MODS ===== */
+    .mods-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+      padding: 15px 32px;
+      border-radius: var(--r-md);
+      background: linear-gradient(135deg, var(--amber), var(--amber-light));
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .mods-dl:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 rgba(0,0,0,0.5), 0 0 24px rgba(217,119,6,0.25); }
+    .mods-dl:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 rgba(0,0,0,0.5); }
+    .mods-dl svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .mods-dl__size { font-size: 11px; font-weight: 600; opacity: 0.85; }
+    .mods-hero__hint {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-faint);
+      text-align: center;
+    }
+    .mods-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 1120px;
+      margin: 0 auto 80px;
+    }
+    .mod-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 20px;
+      background: var(--surface);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .mod-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amber), var(--amber-light), var(--amber));
+      border-radius: var(--r-lg) var(--r-lg) 0 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .mod-card:hover {
+      border-color: var(--border-light);
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.5), 0 0 30px rgba(217,119,6,0.08);
+    }
+    .mod-card:hover::before { opacity: 1; }
+    .mod-card__top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .mod-card__icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--amber-dim);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+      padding: 6px;
+    }
+    .mod-card__icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
+    .mod-card__name { font-size: 15px; font-weight: 700; }
+    .mod-card__ver { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+    .mod-card__lib {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 8px;
+      border-radius: var(--r-full);
+      border: 1px solid rgba(217,119,6,0.3);
+      background: var(--amber-dim);
+      color: var(--amber-light);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+    .mod-card__desc {
+      flex: 1;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .mod-card__link {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: var(--r-md);
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-decoration: none;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .mod-card__link:hover { border-color: var(--border-light); color: var(--amber-light); transform: translate(-1px, -1px); }
+    .mod-card__link svg { width: 14px; height: 14px; }
+
+    /* ===== RULES ===== */
+    .rules-box {
+      max-width: 720px;
+      margin: 0 auto 80px;
+      padding: 28px 26px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--surface);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    .rules-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .rules-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border-radius: var(--r-md);
+      background: linear-gradient(135deg, var(--amber), var(--amber-light));
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .rules-link:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 rgba(0,0,0,0.5), 0 0 24px rgba(217,119,6,0.25); }
+    .rules-link svg { width: 18px; height: 18px; }
+
+    @media (max-width: 980px) {
+      .mods-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 620px) {
+      .mods-grid { grid-template-columns: 1fr; }
+      .map-frame { min-height: 380px; height: 56vh; }
+    }
   </style>
 </head>
 <body>
@@ -291,11 +525,8 @@
         <a href="news">Новости</a>
         <a href="seasons">Сезоны</a>
         <a href="players">Персонал</a>
-        <a href="content">Контент</a>
-        <a href="map">Карта</a>
-        <a href="useful" class="active">Полезное</a><a href="kb">Кодекс</a><a href="mods">Моды</a>
+        <a href="useful" class="active">Полезное</a><a href="kb">Кодекс</a>
         <a href="links">Ссылки</a>
-        <a href="https://zakonodatelnaya-baza-nodex.gitbook.io/nodex-docs" target="_blank" rel="noopener">Правила</a>
       </nav>
       <div class="header__actions">
         <a href="https://www.donationalerts.com/r/nodex_mine" target="_blank" rel="noopener" class="header__cta">Магазин (ВРЕМЕННЫЙ)</a>
@@ -311,11 +542,8 @@
     <a href="news">Новости</a>
     <a href="seasons">Сезоны</a>
     <a href="players">Персонал</a>
-    <a href="content">Контент</a>
-    <a href="map">Карта</a>
-    <a href="useful">Полезное</a><a href="kb">Кодекс</a><a href="mods">Моды</a>
+    <a href="useful">Полезное</a><a href="kb">Кодекс</a>
     <a href="links">Ссылки</a>
-    <a href="https://zakonodatelnaya-baza-nodex.gitbook.io/nodex-docs" target="_blank" rel="noopener">Правила</a>
     <a href="https://www.donationalerts.com/r/nodex_mine" target="_blank" rel="noopener">Магазин (ВРЕМЕННЫЙ)</a>
   </div>
 
@@ -332,6 +560,9 @@
       <div class="useful-tabs">
         <div class="useful-tab active" data-panel="panelFaq" onclick="switchUsefulTab(this)"><svg class="nx-ic"><use href="../img/icons.svg#i-question"/></svg> F.A.Q.</div>
         <div class="useful-tab" data-panel="panelStart" onclick="switchUsefulTab(this)"><svg class="nx-ic"><use href="../img/icons.svg#i-film"/></svg> Как попасть</div>
+        <div class="useful-tab" data-panel="panelMap" onclick="switchUsefulTab(this)"><svg class="nx-ic"><use href="../img/icons.svg#i-map"/></svg> Карта</div>
+        <div class="useful-tab" data-panel="panelMods" onclick="switchUsefulTab(this)"><svg class="nx-ic"><use href="../img/icons.svg#i-package"/></svg> Моды</div>
+        <div class="useful-tab" data-panel="panelRules" onclick="switchUsefulTab(this)"><svg class="nx-ic"><use href="../img/icons.svg#i-memo"/></svg> Правила</div>
       </div>
     </div>
 
@@ -433,6 +664,162 @@
           <p>Сервер приватный — попасть можно только по заявке. Необходимо быть YouTube-блогером или стримером.</p>
         </div>
       </div>
+
+      <!-- MAP -->
+      <div class="useful-panel" id="panelMap">
+        <div class="panel-head">
+          <h3>Карта мира</h3>
+          <p>Смотри территорию Nodex в реальном времени: спавн, постройки и освоенные уголки сезона.</p>
+        </div>
+        <div class="map-frame" id="mapFrame">
+          <div class="map-placeholder">
+            <div class="map-placeholder__icon"><svg class="nx-ic" style="width:34px;height:34px"><use href="../img/icons.svg#i-map"/></svg></div>
+            <h2>Карта ещё не подключена</h2>
+            <p>Мы готовим интерактивную карту сезона. Загляни позже!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODS -->
+      <div class="useful-panel" id="panelMods">
+        <div class="panel-head">
+          <h3>Сборка модов</h3>
+          <p>Клиентская сборка для сервера Nodex — Minecraft 1.21.11 (Fabric). Скачай архив и положи его содержимое в папку mods.</p>
+        </div>
+        <div style="text-align:center">
+          <a class="mods-dl" href="../downloads/mods.zip" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Скачать моды
+            <span class="mods-dl__size">ZIP · 13 МБ</span>
+          </a>
+        </div>
+        <div class="mods-hero__hint">Версия сборки: 1.21.11 · Fabric</div>
+        <div class="mods-grid">
+
+          <div class="mod-card reveal">
+            <div class="mod-card__top">
+              <div class="mod-card__icon"><img src="https://cdn.modrinth.com/data/9eGKb6K1/icon.png" alt="Simple Voice Chat" loading="lazy"></div>
+              <div>
+                <div class="mod-card__name">Simple Voice Chat</div>
+                <div class="mod-card__ver">1.21.11 · 2.6.21</div>
+              </div>
+            </div>
+            <p class="mod-card__desc">Голосовой чат в Minecraft. Нужен, чтобы слышать музыку с пластинок CustomDiscs.</p>
+            <a class="mod-card__link" href="https://modrinth.com/mod/simple-voice-chat" target="_blank" rel="noopener">Modrinth <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+
+          <div class="mod-card reveal">
+            <div class="mod-card__top">
+              <div class="mod-card__icon"><img src="https://cdn.modrinth.com/data/PFwYNrHb/8a003f5e07dbb38c9df552f398cb771dc6216b79_96.webp" alt="Armor Poser" loading="lazy"></div>
+              <div>
+                <div class="mod-card__name">Armor Poser</div>
+                <div class="mod-card__ver">1.21.11 · 13.3.2</div>
+              </div>
+            </div>
+            <p class="mod-card__desc">GUI для стойки для брони: настройка позы и других свойств.</p>
+            <a class="mod-card__link" href="https://modrinth.com/mod/armor-poser" target="_blank" rel="noopener">Modrinth <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+
+          <div class="mod-card reveal">
+            <div class="mod-card__top">
+              <div class="mod-card__icon"><img src="https://cdn.modrinth.com/data/pZ2wrerK/eed7e2c9851392e5879c7d7cb763f142f124e6d2_96.webp" alt="Emotecraft" loading="lazy"></div>
+              <div>
+                <div class="mod-card__name">Emotecraft</div>
+                <div class="mod-card__ver">1.21.11 · 3.2.0</div>
+              </div>
+            </div>
+            <p class="mod-card__desc">Создавай собственные эмоции в Minecraft.</p>
+            <a class="mod-card__link" href="https://modrinth.com/mod/emotecraft" target="_blank" rel="noopener">Modrinth <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+
+          <div class="mod-card reveal">
+            <div class="mod-card__top">
+              <div class="mod-card__icon"><img src="https://cdn.modrinth.com/data/ygYU16dG/6ec5f4add75569ceef806fa15f63017de511c381_96.webp" alt="My Totem Doll" loading="lazy"></div>
+              <div>
+                <div class="mod-card__name">My Totem Doll</div>
+                <div class="mod-card__ver">1.21.11 · 2.3.3</div>
+              </div>
+            </div>
+            <p class="mod-card__desc">Заменяет обычные тотемы на тотемы со скинами игроков.</p>
+            <a class="mod-card__link" href="https://modrinth.com/mod/my_totem_doll" target="_blank" rel="noopener">Modrinth <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+
+          <div class="mod-card reveal">
+            <div class="mod-card__top">
+              <div class="mod-card__icon"><img src="https://cdn.modrinth.com/data/iCl1mF5K/7a733c3436d7fd6d700df26f5632ac276126bf32_96.webp" alt="ImagineBook" loading="lazy"></div>
+              <div>
+                <div class="mod-card__name">ImagineBook</div>
+                <div class="mod-card__ver">1.21.11 · 1.2.9</div>
+              </div>
+            </div>
+            <p class="mod-card__desc">Клиентские изображения в книгах.</p>
+            <a class="mod-card__link" href="https://modrinth.com/mod/imaginebook" target="_blank" rel="noopener">Modrinth <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+
+          <div class="mod-card reveal">
+            <div class="mod-card__top">
+              <div class="mod-card__icon"><img src="../img/server-icon.jpeg" alt="Кастомный мод Nodex" loading="lazy"></div>
+              <div>
+                <div class="mod-card__name">Кастомный мод Nodex<span class="mod-card__lib">Секретный</span></div>
+                <div class="mod-card__ver">1.21.11 · 1.0.0</div>
+              </div>
+            </div>
+            <p class="mod-card__desc">Секрет! Кастомный мод, собранный лично для наших игроков. Никому не рассказывай.</p>
+          </div>
+
+          <div class="mod-card reveal">
+            <div class="mod-card__top">
+              <div class="mod-card__icon"><img src="https://cdn.modrinth.com/data/P7dR8mSH/icon.png" alt="Fabric API" loading="lazy"></div>
+              <div>
+                <div class="mod-card__name">Fabric API<span class="mod-card__lib">Библиотека</span></div>
+                <div class="mod-card__ver">1.21.11 · 0.141.6</div>
+              </div>
+            </div>
+            <p class="mod-card__desc">Обязательная библиотека для работы модов на Fabric.</p>
+            <a class="mod-card__link" href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener">Modrinth <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+
+          <div class="mod-card reveal">
+            <div class="mod-card__top">
+              <div class="mod-card__icon"><img src="https://cdn.modrinth.com/data/9s6osm5g/ed8a2316cbb6f4fc5f510e8e13a59a85cbbbff4d_96.webp" alt="Cloth Config API" loading="lazy"></div>
+              <div>
+                <div class="mod-card__name">Cloth Config API<span class="mod-card__lib">Библиотека</span></div>
+                <div class="mod-card__ver">1.21.11 · 21.11.153</div>
+              </div>
+            </div>
+            <p class="mod-card__desc">Библиотека конфигураций для модов.</p>
+            <a class="mod-card__link" href="https://modrinth.com/mod/cloth-config" target="_blank" rel="noopener">Modrinth <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+
+          <div class="mod-card reveal">
+            <div class="mod-card__top">
+              <div class="mod-card__icon"><img src="https://cdn.modrinth.com/data/ha1mEyJS/c1fae260a9377cfb05692f01135b6ca2b7b682c7_96.webp" alt="Player Animation Library" loading="lazy"></div>
+              <div>
+                <div class="mod-card__name">Player Animation Library<span class="mod-card__lib">Библиотека</span></div>
+                <div class="mod-card__ver">1.21.11 · 1.1.9</div>
+              </div>
+            </div>
+            <p class="mod-card__desc">Библиотека анимаций игрока. Обязательная зависимость Emotecraft.</p>
+            <a class="mod-card__link" href="https://modrinth.com/mod/player-animation-library" target="_blank" rel="noopener">Modrinth <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RULES -->
+      <div class="useful-panel" id="panelRules">
+        <div class="panel-head">
+          <h3>Правила сервера</h3>
+          <p>Полный свод правил и кодекс поведения на Nodex.</p>
+        </div>
+        <div class="rules-box">
+          <p>Все правила Nodex собраны в открытой базе. Читай, изучай и соблюдай — за нарушение следуют наказания вплоть до бана.</p>
+          <a class="rules-link" href="https://zakonodatelnaya-baza-nodex.gitbook.io/nodex-docs" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 14 3 14 3 3z"/><polyline points="7 8 17 8 17 16 7 16"/></svg>
+            Открыть правила
+          </a>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -466,6 +853,16 @@
       document.querySelectorAll('.useful-tab').forEach(function(t) { t.classList.toggle('active', t === el); });
       document.querySelectorAll('.useful-panel').forEach(function(p) { p.classList.toggle('active', p.id === el.getAttribute('data-panel')); });
     }
+
+    // ===== DYNAMIC MAP URL =====
+    var BLUEMAP_URL = 'https://nodex-mine.dynmap.xyz/';
+    (function() {
+      var frame = document.getElementById('mapFrame');
+      if (!frame || !BLUEMAP_URL) return;
+      var safe = BLUEMAP_URL.replace(/\/+$/, '');
+      frame.innerHTML = '<span class="map-frame__hint">Перетаскивай карту и ищи базы игроков</span>' +
+        '<iframe src="' + safe + '" loading="lazy" allowfullscreen></iframe>';
+    })();
   </script>
   <script src="../js/server-status.js"></script>
   <script src="../js/word-filter.js"></script>
