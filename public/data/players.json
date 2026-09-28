@@ -13,6 +13,16 @@
     ]
   },
   {
+    "id": "solidstone",
+    "name": "Роман",
+    "minecraftNick": "SolidStone",
+    "role": "хелпер",
+    "description": "Сгусток тьмы, случайно обретший кошачью форму (это его описание)",
+    "birthday": "12-01",
+    "skin": "img/skins/solidstone.png",
+    "head": "img/skins/solidstone_head.png"
+  },
+  {
     "id": "onlyg00se",
     "name": "Goose_676",
     "minecraftNick": "Goose_676",
