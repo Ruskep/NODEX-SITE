@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nodex — приватный Minecraft сервер</title>
+<meta name="description" content="Приватный Minecraft сервер Nodex. Версия 1.21.11. Уникальный лор, стримы, ивенты и дружное комьюнити. Сезон 1 стартует 31 июля в 15:00 МСК.">
+<meta name="theme-color" content="#f59e0b">
+<meta property="og:title" content="Nodex — Minecraft сервер">
+<meta property="og:image" content="https://nodex-mine.vercel.app/img/og-banner.png">
+<link rel="icon" href="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="home">
+<header id="site-header"></header>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Приватный Minecraft со своей легендой.</h1>
+        <p class="lead">Сезоны, лор, который двигают сами игроки, стримы и ивенты. Закрытый сервер для своих — без доната, который даёт преимущество.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent btn-lg" href="/join">Подать заявку</a>
+          <a class="btn btn-lg" href="/wiki">Читать вики</a>
+        </div>
+        <div class="ip-card">
+          <div>
+            <div class="ip-meta">
+              <span class="dot" id="statusDot"></span>
+              <span id="statusText">Проверяем сервер…</span>
+              <span id="statusPlayers"></span>
+              <span id="statusVersion"></span>
+            </div>
+            <div class="ip-addr" id="ipAddr" data-bind="ip">nodexsus63hsugn5.minecraft.surf</div>
+            <div class="ip-alt">Запасной: <span id="ipAddr2" data-bind="ip2">er4wgr35rg3rg3w.aboba.host</span> <button type="button" class="js-copy-ip link" data-copy="ip2">скопировать</button> <span class="muted">· на нём не работает Simple Voice Chat</span></div>
+          </div>
+          <button class="btn btn-accent btn-sm js-copy-ip" type="button" data-copy="ip">Скопировать</button>
+        </div>
+      </div>
+      <a class="season-card" href="/seasons" aria-label="Сезон 1">
+        <img src="/img/seasons/season1_cover.png" alt="Сезон 1 — первая глава">
+        <span class="badge-live"><span class="dot on"></span>Сезон 1 идёт сейчас</span>
+        <span class="cap"><b>Новая история начинается</b><span>Старт: 31 июля 2026, 15:00 МСК</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Сервер живёт прямо сейчас</h2>
+        <p class="lead">Онлайн за сутки приходит с игрового сервера и обновляется в реальном времени.</p>
+      </div>
+      <div class="live-grid">
+        <div class="card">
+          <div class="chart-top">
+            <h3>Онлайн за сутки</h3>
+            <span class="uptime" id="uptime"></span>
+          </div>
+          <div class="big-num"><strong id="nowCount">–</strong><span id="nowLabel">сейчас на сервере</span></div>
+          <div class="chart" id="chart"><div class="chart-empty" id="chartEmpty">Загружаем данные…</div></div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:6px">О сервере</h3>
+          <div class="info-list">
+            <div class="info-row"><span>Статус</span><span id="iStatus">—</span></div>
+            <div class="info-row"><span>Игроков</span><span id="iPlayers">—</span></div>
+            <div class="info-row"><span>Версия</span><span id="iVersion">—</span></div>
+            <div class="info-row"><span>Сезон</span><span>Сезон 1</span></div>
+          </div>
+          <div class="soon">Рейтинг игроков по наигранному времени появится здесь позже.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>С чего начать</h2>
+        <p class="lead">Всё, что нужно знать о Nodex: как попасть, что умеет сервер и где искать ответы.</p>
+      </div>
+      <div class="tiles">
+        <div class="tile">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>Сезоны</h3><p>История сервера: что было, что идёт сейчас и что будет дальше.</p>
+          <a class="more" href="/seasons">Открыть сезоны</a>
+        </div>
+        <div class="tile">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg></div>
+          <h3>Как попасть</h3><p>Заявка через тикет в Discord, форма и сроки рассмотрения.</p>
+          <a class="more" href="/join">Узнать шаги</a>
+        </div>
+        <div class="tile">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/></svg></div>
+          <h3>Вики</h3><p>Механики сервера, правила, команды чата, рыбалка и всё остальное.</p>
+          <a class="more" href="/wiki">Открыть вики</a>
+        </div>
+        <div class="tile">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div>
+          <h3>Магазин</h3><p>Только косметика и удобства. Преимущества в игре не продаём.</p>
+          <a class="more" href="https://nodex.easydonate.ru/" target="_blank" rel="noopener">Перейти в магазин</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="border-bottom:0">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Вступайте в наше комьюнити</h2>
+          <p>Общение, анонсы ивентов, поиск союзников и помощь новичкам — вся жизнь сервера в Discord.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-dark btn-lg" href="https://discord.gg/jUmXexAkNY" target="_blank" rel="noopener">Присоединиться в Discord</a>
+          <a class="btn btn-lg" href="/join">Подать заявку</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/js/common.js"></script>
+<script src="/js/online.js"></script>
+</body>
+</html>

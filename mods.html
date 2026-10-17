@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Моды и сборки — Nodex</title>
+<meta name="description" content="Выбери сборку Nodex: Минимальная, Максимальная или Блогерская. Список модов и ссылки на Modrinth.">
+<meta name="theme-color" content="#f59e0b">
+<link rel="icon" href="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+/* градиентный фон страницы */
+.mods-page{position:relative;isolation:isolate;overflow:hidden}
+.mods-bg{position:absolute;inset:-20%;z-index:-1;pointer-events:none;filter:blur(60px);opacity:.55;
+  background:
+    radial-gradient(40% 40% at 20% 20%,rgba(245,158,11,.45),transparent 70%),
+    radial-gradient(40% 40% at 80% 30%,rgba(251,113,133,.35),transparent 70%),
+    radial-gradient(45% 45% at 60% 85%,rgba(167,139,250,.35),transparent 70%);
+  animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(3%,-2%,0) scale(1.08)}}
+
+.build-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;perspective:1200px}
+.build-card{position:relative;overflow:hidden;text-align:left;display:flex;flex-direction:column;gap:10px;padding:26px 24px 22px;
+  background:linear-gradient(160deg,rgba(26,24,18,.85),rgba(20,18,13,.95));border:1px solid var(--line);border-radius:24px;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .45s;transform-style:preserve-3d}
+.build-card:hover{transform:translateY(-6px) rotateX(3deg)}
+.build-card.active{border-color:var(--c1);box-shadow:0 30px 70px -28px var(--c1)}
+.b-glow{position:absolute;inset:-40% -30% auto;height:70%;pointer-events:none;opacity:.6;
+  background:radial-gradient(closest-side,var(--c1),transparent);filter:blur(30px)}
+.build-card.active .b-glow{opacity:.9}
+.b-icon{position:relative;width:120px;height:120px;margin:0 auto 6px;animation:float 5s ease-in-out infinite;filter:drop-shadow(0 18px 22px rgba(0,0,0,.45))}
+.build-card:nth-child(2) .b-icon{animation-delay:-1.6s}
+.build-card:nth-child(3) .b-icon{animation-delay:-3.2s}
+.b-icon svg{width:100%;height:100%;display:block}
+@keyframes float{0%,100%{transform:translateY(0) rotateY(0)}50%{transform:translateY(-10px) rotateY(12deg)}}
+.build-card:hover .b-icon{transform:rotateY(18deg) rotateX(8deg)}
+.b-tag{align-self:center;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c1)}
+.b-name{font:800 22px var(--font-d);text-align:center}
+.b-desc{font-size:13.5px;color:var(--muted);text-align:center;min-height:42px}
+.b-specs{list-style:none;display:grid;gap:6px;margin-top:4px}
+.b-specs li{font-size:13px;display:flex;gap:8px;align-items:center}
+.b-specs li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c1);flex:none;box-shadow:0 0 8px var(--c1)}
+.b-pick{margin-top:auto;align-self:center;padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700;border:1px solid var(--line);color:var(--muted)}
+.build-card.active .b-pick{background:var(--c1);border-color:var(--c1);color:#1b1100}
+
+.build-detail{margin-top:40px;padding:34px;border-radius:28px;background:linear-gradient(160deg,rgba(26,24,18,.9),rgba(15,14,10,.95));border:1px solid var(--line);
+  background-image:linear-gradient(160deg,rgba(26,24,18,.9),rgba(15,14,10,.95)),linear-gradient(120deg,rgba(245,158,11,.25),rgba(167,139,250,.25));background-origin:border-box;background-clip:padding-box,border-box;border:1px solid transparent}
+.detail-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.detail-head h2{font-size:30px;margin:8px 0 6px}
+.detail-head .lead{max-width:520px}
+.detail-dl{display:grid;gap:8px;justify-items:end}
+.dl-btn.is-disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
+.small{font-size:12.5px}
+.steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:30px}
+.step{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-size:13.5px}
+.step b{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:800 13px var(--font-d);flex:none}
+.list-title{font-size:18px;margin-bottom:14px}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.m-card{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:18px;background:var(--panel);border:1px solid var(--line);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s}
+.m-card:hover{transform:translateY(-4px);border-color:rgba(245,158,11,.45);box-shadow:0 18px 40px -20px rgba(245,158,11,.4)}
+.m-card.custom{background:linear-gradient(160deg,rgba(245,158,11,.14),var(--panel) 65%);border-color:rgba(245,158,11,.4)}
+.m-top{display:flex;gap:12px;align-items:center}
+.m-ico{width:52px;height:52px;border-radius:14px;overflow:hidden;background:var(--panel-2);display:grid;place-items:center;flex:none;box-shadow:inset 0 0 0 1px var(--line)}
+.m-ico img{width:100%;height:100%;object-fit:cover}
+.m-letter{font:800 20px var(--font-d);color:var(--accent)}
+.m-card h3{font-size:15px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.m-card .ver{font-size:12px;color:var(--muted);margin-top:2px}
+.m-card p{font-size:13px;color:var(--muted);flex:1}
+.m-card a{font-size:13px;font-weight:600;color:var(--accent)}
+.pill.lib{background:rgba(255,255,255,.06);color:var(--muted)}
+.placeholder.soon{margin-top:18px}
+
+@media (max-width:900px){.build-grid{grid-template-columns:1fr}.steps-row{grid-template-columns:1fr}.build-detail{padding:22px}.detail-dl{justify-items:start}}
+@media (prefers-reduced-motion: reduce){.b-icon,.mods-bg{animation:none!important}}
+</style>
+</head>
+<body data-page="mods">
+<header id="site-header"></header>
+<main class="mods-page">
+  <div class="mods-bg" aria-hidden="true"></div>
+  <section class="page-hero center">
+    <div class="wrap">
+      <div class="crumbs" style="margin-bottom:10px">Гайды · Сборки</div>
+      <h1>Выбери сборку</h1>
+      <p class="lead">Три варианта под разные задачи. Все работают на Fabric 1.21.11, а кастомный Nodex-MOD входит в каждую.</p>
+    </div>
+  </section>
+
+  <section class="block" style="border-bottom:0;padding-top:20px">
+    <div class="wrap">
+      <div class="build-grid" id="buildGrid" role="radiogroup" aria-label="Выбор сборки"></div>
+      <div class="build-detail" id="buildDetail"></div>
+    </div>
+  </section>
+</main>
+<footer id="site-footer"></footer>
+<script src="/js/common.js"></script>
+<script src="/js/builds.js"></script>
+<script src="/js/mods.js"></script>
+</body>
+</html>

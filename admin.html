@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Админка — Nodex</title>
+<link rel="icon" href="/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+[hidden]{display:none!important}
+body{padding:0}
+.a-bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 20px;background:rgba(26,24,18,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.a-bar .brand{margin-right:auto}
+.a-state{font-size:12.5px;color:var(--muted)}
+.a-state.dirty{color:var(--accent)}
+.a-main{max-width:960px;margin:0 auto;padding:26px 20px 80px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.tab{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-size:13.5px;font-weight:600;color:var(--muted)}
+.tab.active{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.a-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.a-top h2{font-size:22px}
+.a-list{display:grid;gap:10px}
+.a-item{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.a-item b{font-size:15px}
+.a-acts{display:flex;gap:8px;flex-wrap:wrap}
+.btn-danger{color:var(--bad);border-color:rgba(248,113,113,.35)}
+.a-form{display:grid;gap:14px}
+.fld{display:grid;gap:6px}
+.fld label{font-size:12.5px;color:var(--muted);font-weight:600}
+.fld input,.fld textarea,.fld select{width:100%;padding:10px 12px;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;color:var(--text);font:inherit;font-size:14px}
+.fld input:focus,.fld textarea:focus,.fld select:focus{outline:none;border-color:var(--accent)}
+.fld textarea{resize:vertical}
+.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login .card{width:100%;max-width:360px;display:grid;gap:14px}
+.err{color:var(--bad);font-size:13px;min-height:18px}
+#msg{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--panel-2);border:1px solid var(--line);padding:10px 18px;border-radius:999px;font-size:13px;opacity:0;transition:.2s;pointer-events:none;z-index:99}
+#msg.show{opacity:1}
+</style>
+</head>
+<body>
+
+<section id="login" class="login">
+  <form class="card" id="loginForm">
+    <div class="brand"><img src="/img/logo.png" alt="" width="28" height="28">Nodex · Админка</div>
+    <div class="fld"><label for="pw">Пароль</label><input id="pw" type="password" autocomplete="current-password" required></div>
+    <button class="btn btn-accent" type="submit" id="loginBtn">Войти</button>
+    <div class="err" id="loginErr"></div>
+  </form>
+</section>
+
+<section id="app" hidden>
+  <div class="a-bar">
+    <a class="brand" href="/"><img src="/img/logo.png" alt="" width="28" height="28">Админка Nodex</a>
+    <span class="a-state" id="state">Всё сохранено</span>
+    <a class="btn btn-sm" href="/" target="_blank" rel="noopener">Открыть сайт</a>
+    <button class="btn btn-sm btn-accent" id="saveAll" type="button">Сохранить на сайт</button>
+    <button class="btn btn-sm" id="logout" type="button">Выйти</button>
+  </div>
+  <main class="a-main">
+    <nav class="tabs" id="tabs">
+      <button class="tab" type="button" data-tab="news">Новости</button>
+      <button class="tab" type="button" data-tab="seasons">Сезоны</button>
+      <button class="tab" type="button" data-tab="staff">Персонал</button>
+      <button class="tab" type="button" data-tab="settings">Настройки</button>
+    </nav>
+    <div id="view"></div>
+  </main>
+</section>
+
+<div id="msg"></div>
+
+<script>
+(function () {
+  var SCHEMA = {
+    news: {
+      name: 'Новости',
+      title: function (x) { return x.title || '(без заголовка)'; },
+      sub: function (x) { return x.date || ''; },
+      fields: [
+        { k: 'date', label: 'Дата', type: 'date' },
+        { k: 'title', label: 'Заголовок' },
+        { k: 'text', label: 'Текст', type: 'area' },
+        { k: 'img', label: 'Картинка (ссылка или /img/…)' },
+        { k: 'link', label: 'Ссылка (необязательно)' }
+      ]
+    },
+    seasons: {
+      name: 'Сезоны',
+      title: function (x) { return '#' + (x.num || '?') + ' · ' + (x.title || ''); },
+      sub: function (x) { return x.date || ''; },
+      fields: [
+        { k: 'num', label: 'Номер', type: 'number' },
+        { k: 'title', label: 'Название' },
+        { k: 'date', label: 'Даты (текстом)' },
+        { k: 'text', label: 'Описание', type: 'area' },
+        { k: 'img', label: 'Картинка (ссылка или /img/…)' },
+        { k: 'status', label: 'Статус', type: 'select', opts: [['now', 'Сейчас идёт'], ['done', 'Завершён'], ['soon', 'Скоро']] }
+      ]
+    },
+    staff: {
+      name: 'Персонал',
+      title: function (x) { return x.nick || '(без ника)'; },
+      sub: function (x) { return x.role || ''; },
+      fields: [
+        { k: 'nick', label: 'Ник' },
+        { k: 'role', label: 'Роль' },
+        { k: 'text', label: 'Описание', type: 'area' },
+        { k: 'avatar', label: 'Аватар (необязательно)' },
+        { k: 'links.youtube', label: 'YouTube' },
+        { k: 'links.twitch', label: 'Twitch' },
+        { k: 'links.discord', label: 'Discord' }
+      ]
+    }
+  };
+  var SETTINGS = [
+    { k: 'ip', label: 'Основной IP' },
+    { k: 'ip2', label: 'Запасной IP' },
+    { k: 'version', label: 'Версия' },
+    { k: 'discord', label: 'Ссылка на Discord' }
+  ];
+
+  var S = null, tab = 'news', editIdx = -1, draft = null, dirty = false;
+  var token = sessionStorage.getItem('nodexAdmin') || '';
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  function get(o, k) { var v = o; k.split('.').forEach(function (p) { v = (v && v[p] != null) ? v[p] : undefined; }); return v == null ? '' : v; }
+  function put(o, k, val) { var ps = k.split('.'), last = ps.pop(), t = o; ps.forEach(function (p) { if (!t[p] || typeof t[p] !== 'object') t[p] = {}; t = t[p]; }); t[last] = val; }
+  function msg(t) { var m = $('msg'); m.textContent = t; m.classList.add('show'); clearTimeout(msg.t); msg.t = setTimeout(function () { m.classList.remove('show'); }, 2000); }
+
+  function call(method, path, body) {
+    var h = { 'Content-Type': 'application/json' };
+    if (token) h.Authorization = 'Bearer ' + token;
+    return fetch(path, { method: method, headers: h, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (!r.ok) { var e = new Error(j.error || ('Ошибка ' + r.status)); e.status = r.status; throw e; }
+          return j;
+        });
+      });
+  }
+
+  function setDirty(v) {
+    dirty = v;
+    var s = $('state');
+    s.textContent = v ? 'Есть несохранённые изменения' : 'Всё сохранено';
+    s.className = 'a-state' + (v ? ' dirty' : '');
+  }
+  function showLogin(reason) {
+    token = ''; sessionStorage.removeItem('nodexAdmin');
+    $('app').hidden = true; $('login').hidden = false;
+    $('loginErr').textContent = reason || '';
+  }
+  function showApp() { $('login').hidden = true; $('app').hidden = false; }
+
+  function render() {
+    document.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('active', b.dataset.tab === tab); });
+    if (tab === 'settings') return renderSettings();
+    if (editIdx >= 0) return renderEditor();
+    renderList();
+  }
+
+  function renderList() {
+    var items = S[tab], sc = SCHEMA[tab];
+    var html = '<div class="a-top"><h2>' + sc.name + ' <span class="muted">' + items.length + '</span></h2>' +
+      '<button class="btn btn-accent btn-sm" data-act="add">+ Добавить</button></div>';
+    if (!items.length) {
+      html += '<div class="placeholder"><h3>Пока пусто</h3>Нажми «+ Добавить», чтобы создать первую запись.</div>';
+    } else {
+      html += '<div class="a-list">' + items.map(function (x, i) {
+        return '<div class="a-item"><div><b>' + esc(sc.title(x)) + '</b><div class="muted" style="font-size:13px">' + esc(sc.sub(x)) + '</div></div>' +
+          '<div class="a-acts">' +
+          '<button class="btn btn-sm" data-act="edit" data-i="' + i + '">Изменить</button>' +
+          '<button class="btn btn-sm" data-act="up" data-i="' + i + '" title="Выше">↑</button>' +
+          '<button class="btn btn-sm" data-act="down" data-i="' + i + '" title="Ниже">↓</button>' +
+          '<button class="btn btn-sm btn-danger" data-act="del" data-i="' + i + '">Удалить</button>' +
+          '</div></div>';
+      }).join('') + '</div>';
+    }
+    $('view').innerHTML = html;
+  }
+
+  function fieldHtml(F, obj) {
+    var v = get(obj, F.k), id = 'f_' + F.k.replace(/\./g, '_'), inp;
+    if (F.type === 'area') inp = '<textarea id="' + id + '" rows="4">' + esc(v) + '</textarea>';
+    else if (F.type === 'select') inp = '<select id="' + id + '">' + F.opts.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === v ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>';
+    else inp = '<input id="' + id + '" type="' + (F.type || 'text') + '" value="' + esc(v) + '">';
+    return '<div class="fld"><label for="' + id + '">' + F.label + '</label>' + inp + '</div>';
+  }
+
+  function readFields(fields, obj) {
+    fields.forEach(function (F) {
+      var el = $('f_' + F.k.replace(/\./g, '_'));
+      if (!el) return;
+      put(obj, F.k, F.type === 'number' ? (Number(el.value) || 0) : el.value);
+    });
+  }
+
+  function renderEditor() {
+    var sc = SCHEMA[tab], isNew = editIdx >= S[tab].length;
+    $('view').innerHTML = '<div class="a-top"><h2>' + (isNew ? 'Новая запись' : 'Редактирование') + ' · ' + SCHEMA[tab].name + '</h2></div>' +
+      '<div class="card a-form">' + sc.fields.map(function (F) { return fieldHtml(F, draft); }).join('') +
+      '<div class="a-acts"><button class="btn btn-accent" data-act="save-item">Сохранить запись</button><button class="btn" data-act="cancel">Отмена</button></div></div>';
+  }
+
+  function renderSettings() {
+    $('view').innerHTML = '<div class="a-top"><h2>Настройки сайта</h2></div>' +
+      '<div class="card a-form">' + SETTINGS.map(function (F) { return fieldHtml(F, S.settings); }).join('') +
+      '<div class="a-acts"><button class="btn btn-accent" data-act="save-settings">Применить</button></div></div>';
+  }
+
+  $('view').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-act]');
+    if (!b || !S) return;
+    var act = b.dataset.act, i = Number(b.dataset.i), items = S[tab];
+    if (act === 'add') { draft = {}; editIdx = items.length; render(); }
+    else if (act === 'edit') { draft = JSON.parse(JSON.stringify(items[i])); editIdx = i; render(); }
+    else if (act === 'del') { if (confirm('Удалить запись?')) { items.splice(i, 1); setDirty(true); render(); } }
+    else if (act === 'up' && i > 0) { var a = items[i]; items[i] = items[i - 1]; items[i - 1] = a; setDirty(true); render(); }
+    else if (act === 'down' && i < items.length - 1) { var c = items[i]; items[i] = items[i + 1]; items[i + 1] = c; setDirty(true); render(); }
+    else if (act === 'save-item') {
+      readFields(SCHEMA[tab].fields, draft);
+      if (editIdx >= items.length) items.push(draft); else items[editIdx] = draft;
+      editIdx = -1; setDirty(true); render(); msg('Запись сохранена в черновик');
+    }
+    else if (act === 'cancel') { editIdx = -1; render(); }
+    else if (act === 'save-settings') {
+      readFields(SETTINGS, S.settings); setDirty(true); msg('Применено. Не забудь «Сохранить на сайт»');
+    }
+  });
+
+  document.querySelectorAll('.tab').forEach(function (b) {
+    b.addEventListener('click', function () { tab = b.dataset.tab; editIdx = -1; render(); });
+  });
+
+  $('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    $('loginErr').textContent = ''; $('loginBtn').disabled = true;
+    call('POST', '/api/admin/login', { password: $('pw').value })
+      .then(function (j) { token = j.token; sessionStorage.setItem('nodexAdmin', token); $('pw').value = ''; return load(); })
+      .catch(function (err) { $('loginErr').textContent = err.message; })
+      .then(function () { $('loginBtn').disabled = false; });
+  });
+
+  function load() {
+    return call('GET', '/api/admin/content')
+      .then(function (d) { S = d; showApp(); setDirty(false); tab = tab || 'news'; render(); })
+      .catch(function (err) {
+        if (err.status === 401) return showLogin('Сессия истекла, войди снова');
+        showApp();
+        $('view').innerHTML = '<div class="placeholder"><h3>Не удалось загрузить</h3>' + esc(err.message) + '</div>';
+      });
+  }
+
+  $('saveAll').addEventListener('click', function () {
+    $('saveAll').disabled = true;
+    call('PUT', '/api/admin/content', S)
+      .then(function (j) { S = j.saved; setDirty(false); msg('Сохранено на сайт'); })
+      .catch(function (err) {
+        if (err.status === 401) return showLogin('Сессия истекла, войди снова');
+        alert(err.message);
+      })
+      .then(function () { $('saveAll').disabled = false; });
+  });
+
+  $('logout').addEventListener('click', function () {
+    if (dirty && !confirm('Есть несохранённые изменения. Выйти?')) return;
+    dirty = false; showLogin('');
+  });
+
+  window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+  if (token) load(); else showLogin('');
+})();
+</script>
+</body>
+</html>
