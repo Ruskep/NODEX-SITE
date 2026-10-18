@@ -1,6 +1,0 @@
-name = "nodex-twitch-proxy"
-main = "src/index.js"
-compatibility_date = "2024-01-01"
-
-# Local dev: run `npx wrangler dev`
-# requires secrets set via: npx wrangler secret put TWITCH_CLIENT_SECRET

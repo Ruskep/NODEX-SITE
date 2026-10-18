@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /admin
-Disallow: /mystery
-
-Sitemap: https://nodex-mine.web.app/sitemap.xml
